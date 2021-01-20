@@ -1,0 +1,195 @@
+\begin{frame}{Motivations}{Une liste exhaustive}
+    \begin{itemize}[<+->]
+        \item Par \colorbox{yellow}{\textbf{curiosité}} et envie d'apprendre
+        \item Pour \colorbox{yellow}{\textbf{comprendre}} et mettre en pratique
+        des concepts appris dans d'autre languages fonctionnels (\textit{Haskell, OCaml})
+        \item Pour \colorbox{yellow}{\textbf{propager}} ces concepts et les rendre facilement accessible
+        \item Pour \colorbox{yellow}{\textbf{favoriser}} l'interopérabilité et l'\textit{éco-informatique}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \begin{flushleft}
+        \textit{
+            Les chercheurs du Centre for Energy-Efficient Telecommunications (CEET) et des laboratoires Bell ont montré que
+            les technologies de l'information et de la communication (TIC), qui englobent Internet, les vidéos, les fichiers sonores
+            et autres services dans le cloud, produiraient plus de 830 millions de tonnes de CO\textsubscript{2} chaque année.\\
+            \bigskip
+            Cela représente 2\% des émissions globales du principal gaz à effet de serre.\\
+            \bigskip
+            Une telle quantité de CO\textsubscript{2} équivaut aux émissions de l'industrie aérienne.
+        }
+    \end{flushleft}
+
+    \blankfootnote{Source: \href{https://www.futura-sciences.com/planete/actualites/developpement-durable-emissions-co2-liees-internet-polluent-autant-avion-43802/}{Futura Sciences}}
+\end{frame}
+
+\begin{frame}
+    \begin{flushleft}
+        \textit{
+            Je fais du vélo le matin, je voudrais ne pas respirer la poussière générée
+            par ces datacenters fous fonctionnant si mal avec des algorithmes,
+            car on se donne entre les mains un pouvoir qu'il ne maîtrise pas.
+        }
+        \begin{flushright}
+            \tiny{---Julien Pauli}
+        \end{flushright}
+    \end{flushleft}
+
+    \blankfootnote{Source: \href{http://blog.jpauli.tech/a-new-move-in-my-career/}{Julien Pauli blog}}
+\end{frame}
+
+\begin{frame}{loophp/collection}{A propos}
+    \begin{itemize}[<+->]
+        \item OpenSource, dispo sur Github
+        \item Disponible pour PHP >= 7.4
+        \item Commencé en Août 2019
+        \item Pas de dépendances
+        \item $\pm$ 800 commits
+        \item Entièrement paresseuse
+        \item $\pm$ 85 méthodes disponibles
+        \item Testée, typée
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{loophp/collection}{Idées et concepts}
+    \begin{itemize}[<+->]
+        \item Basé sur une utilisation exhaustive des générateurs
+        \item Concepts directement inspirés du language Haskell
+        \item Corrige beaucoup d'incohérences de PHP
+        \item Algorithmes optimisés et re-utilisés partout
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{loophp/collection}{Utilisé par qui?}
+    \begin{itemize}[<+->]
+        \item Sur des projets personnels
+        \item Par des clients en Belgique et Luxembourg
+        \item Par des utilisateurs pour agréger des données en France
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Exemple d'utilisation 0}{Double flip}
+    \begin{lstlisting}[firstnumber=1]
+    <?php
+
+    Collection::fromIterable(['a', 'b', 'c', 'd', 'a'])
+        ->flip()
+        ->flip();
+    \end{lstlisting}
+
+    \pause
+
+    \begin{lstlisting}[firstnumber=8]
+    // ['a', 'b', 'c', 'd', 'a']
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Exemple d'utilisation 1}{On commence en douceur}
+    \begin{lstlisting}[firstnumber=1]
+    <?php
+
+    Collection::times(1000000)
+        ->filter(static fn (int $n): bool => $n % 2 === 0)
+        ->filter(static fn (int $n): bool => str_contains((string) $n, '321'))
+        ->filter(static fn (int $n): bool => strlen((string) $n) >= 4)
+        ->limit(1000);
+    \end{lstlisting}
+
+    \pause
+
+    \begin{lstlisting}[firstnumber=9]
+    // 3210, 3212, 3214, 3216, 3218, 13210, 13212, ... 493218
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Exemple d'utilisation 2}{Analyse de texte}
+    \begin{lstlisting}[firstnumber=1]
+    <?php
+
+    $string = file_get_contents('https://loripsum.net/api');
+    // $string = <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. ...</p>
+
+    Collection::fromString($string)
+        ->filter(static fn (string $i): int => preg_match('/^[a-zA-Z]+$/', $i))
+        ->map(static fn (string $i): string => strtolower($i))
+        ->frequency()
+        ->flip()
+        ->sort()
+        ->reverse();
+    \end{lstlisting}
+
+    \pause
+
+    \begin{lstlisting}[firstnumber=14]
+    /**
+        [i] => 137
+        [e] => 128
+        [t] => 96
+        [a] => 92
+        [u] => 88
+        [s] => 77
+        ...
+    */
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Exemple d'utilisation 3}{La suite de Fibonacci}
+    \begin{lstlisting}[firstnumber=1]
+    <?php
+
+    Collection::unfold(static fn ($a = 0, $b = 1): array => [$b, $a + $b])
+        ->limit(10);
+    \end{lstlisting}
+
+    \pause
+
+    \begin{lstlisting}[firstnumber=6]
+    /**
+        [0, 1],
+        [1, 2],
+        [2, 3],
+        [3, 5],
+        [5, 8],
+        [8, 13],
+        [13, 21],
+        [21, 34],
+        [34, 55],
+        [44, 89],
+    */
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Exemple d'utilisation 4}{Approximation du nombre $\pi$}
+    \begin{lstlisting}[firstnumber=1]
+    <?php
+
+    $precision = 10 ** -4;
+
+    Collection::unfold(static fn (int $n = 0): int => $n + 1)
+        ->map(
+            static fn (int $i): int => $i * 2,
+            static fn (int $i): array => [$i, $i],
+            static fn (array $chunk): array => [
+                $chunk[0] / ($chunk[0] - 1),
+                $chunk[1] / ($chunk[1] + 1)
+            ]
+        )
+        ->unwrap()
+        ->reduction(
+            static fn (float $carry, float $i): float => $carry * $i, 2
+        )
+        ->window(1)
+        ->drop(1)
+        ->until(
+            static fn (array $v): bool => abs($v[0] - $v[1]) < ($precision / 2)
+        )
+        ->last(); // 3.1415676541454
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}
+    \begin{center}
+        {\Large \texttt{\href{https://github.com/loophp/collection}{https://github.com/loophp/collection}}\par}
+    \end{center}
+\end{frame}

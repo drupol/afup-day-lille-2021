@@ -1,0 +1,36 @@
+% From https://jayrobwilliams.com/posts/2019/10/better-beamer
+\makeatletter
+\renewcommand{\itemize}[1][]{%
+	\beamer@ifempty{#1}{}{\def\beamer@defaultospec{#1}}%
+	\ifnum \@itemdepth >2\relax\@toodeep\else
+	\advance\@itemdepth\@ne
+	\beamer@computepref\@itemdepth% sets \beameritemnestingprefix
+	\usebeamerfont{itemize/enumerate \beameritemnestingprefix body}%
+	\usebeamercolor[fg]{itemize/enumerate \beameritemnestingprefix body}%
+	\usebeamertemplate{itemize/enumerate \beameritemnestingprefix body begin}%
+	\list
+	{\usebeamertemplate{itemize \beameritemnestingprefix item}}
+	{\def\makelabel##1{%
+			{%
+				\hss\llap{{%
+						\usebeamerfont*{itemize \beameritemnestingprefix item}%
+						\usebeamercolor[fg]{itemize \beameritemnestingprefix item}##1}}%
+			}%
+		}%
+	}
+	\fi%
+	\setlength\itemsep{\fill}
+	\ifnum \@itemdepth >1
+	\vfill
+	\fi%
+	\beamer@cramped%
+	\raggedright%
+	\beamer@firstlineitemizeunskip%
+}
+\def\enditemize{\ifhmode\unskip\fi\endlist%
+	\usebeamertemplate{itemize/enumerate \beameritemnestingprefix body end}
+	\ifnum \@itemdepth >1
+	\vfil
+	\fi%
+}
+\makeatother
