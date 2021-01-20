@@ -1,0 +1,60 @@
+\input{preamble}
+\input{itemize}
+\input{frames}
+
+\begin{document}
+
+\begin{frame}[plain]
+	\titlepage{}
+\end{frame}
+
+\newcommand\blankfootnote[1]{%
+  \let\thefootnote\relax\footnotetext{#1}%
+  \let\thefootnote\svthefootnote%
+}
+
+\begin{frame}{Menu principal}{Le plat du jour}
+    \begin{itemize}
+        \item Pourquoi
+        \item Les collections
+        \item Les types d'évaluation
+        \item Une collection paresseuse
+        \item Conclusion
+    \end{itemize}
+\end{frame}
+
+\begin{frameD}{Pourquoi}{L'origine de mes recherches}
+
+\end{frameD}
+
+\input{pourquoi.tex}
+
+\begin{frameD}{Les collections}{En général}
+
+\end{frameD}
+
+\input{collections.tex}
+
+\begin{frameD}{Types d'évaluation}{Traditionnelle ou paresseuse}
+
+\end{frameD}
+
+\input{evaluations.tex}
+
+\begin{frameD}{loophp/collection}{Une collection paresseuse}
+
+\end{frameD}
+
+\input{loophp-collections.tex}
+
+\begin{frameD}{Conclusion}
+
+\end{frameD}
+
+\input{conclusion.tex}
+
+\begin{frameD}{Questions}
+
+\end{frameD}
+
+\end{document}

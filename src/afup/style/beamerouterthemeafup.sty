@@ -1,0 +1,22 @@
+\mode<presentation>
+
+% Frame title
+\defbeamertemplate*{frametitle}{ec}[1][left]
+{
+    \includegraphics[trim=2.5cm 0cm 0cm -.25cm, scale=0.35, keepaspectratio]{afup/style/logo/afup-icon-color}
+    \begin{tikzpicture}[remember picture, overlay]
+        \fill[afupblue] (0,0) rectangle (.05,2);
+    \end{tikzpicture}
+    \begin{beamercolorbox}[sep=0cm,#1,wd=\the\@tempdima]{frametitle}
+        \usebeamerfont{frametitle}%
+        \strut\insertframetitle\strut\par%
+        {%
+        \ifx\insertframesubtitle\@empty%
+        \else%
+        {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\strut\insertframesubtitle\strut\par}%
+        \fi
+        }%
+    \end{beamercolorbox}%
+}
+
+\mode<all>

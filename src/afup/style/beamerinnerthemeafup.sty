@@ -1,0 +1,57 @@
+\mode<presentation>
+
+\usepackage{rotating}
+
+% Common background
+\setbeamertemplate{background}{
+    \ifnum\thepage=1\relax%
+      \begin{tikzpicture}
+        \useasboundingbox (0,0) rectangle (\the\paperwidth,\the\paperheight);
+        \fill[color=afupbluebackground] (0,0) rectangle (\the\paperwidth,\the\paperheight/4);
+        \fill[color=afupblue] (1,0) rectangle (1.05, 7);
+      \end{tikzpicture}
+
+      \begin{tikzpicture}[remember picture, overlay]
+        \node[anchor=south east,inner sep=0,outer sep=0, opacity=0.075] at (current page.south east) {
+            \includegraphics[trim=1cm 1cm 1cm 1cm,scale=3, keepaspectratio]{afup/style/logo/afup-icon-inverted}
+        };
+      \end{tikzpicture}
+
+      \begin{tikzpicture}[remember picture, overlay]
+        \node[anchor=north west,inner sep=0,outer sep=0, yshift=-.25cm] at (current page.north west) {
+          \includegraphics[height=2cm, keepaspectratio]{afup/style/logo/afup-day-2021-generic}
+        };
+      \end{tikzpicture}
+    \fi
+}
+
+% Title page
+\defbeamertemplate*{title page}{ec}[1][]
+{
+    \vskip2cm%
+
+    \begin{beamercolorbox}[wd=12cm,leftskip=1cm,sep=0pt,#1]{title page header}
+      \usebeamerfont{title}\inserttitle\par%
+    \end{beamercolorbox}%
+
+    \vskip0.5cm%
+
+    \begin{beamercolorbox}[wd=12cm,leftskip=1cm,sep=0pt,#1]{subtitle page header}
+      \usebeamerfont{title}\insertsubtitle\par%
+    \end{beamercolorbox}%
+
+    \vskip4cm%
+
+    \begin{beamercolorbox}[wd=12cm,leftskip=1cm,#1]{author}
+      \usebeamerfont{author}\hfill\insertauthor%
+    \end{beamercolorbox}
+
+    \vskip0.2cm%
+
+    \begin{beamercolorbox}[wd=12cm,leftskip=1cm,#1]{date}
+      \usebeamerfont{author}\hfill\insertdate%
+    \end{beamercolorbox}
+
+}
+
+\mode<all>
