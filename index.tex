@@ -16,14 +16,23 @@
 	\frametitle{Une collection}
     \framesubtitle{Definition}
 
-    Definir ici l'utilité d'une librairie de collection.
+    \begin{itemize}
+        \item Une collection est une structure unifiée pour représenter et manipuler un ensemble de données.
+        \item Permettant de les manipuler indépendamment de ce qu'elles contiennent.
+        \item Elle permettent de réduire l'effort tout en améliorant les performances\footnotemark.
+        \item Favorise l'interoperabilité
+        \item Favorise la réutilisation
+        \item Inclus des implémentations et algorithmes pour manipuler les données
+    \end{itemize}
+
+    \footnotetext[1]{A test footnote in the first column}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Pourquoi}
     \framesubtitle{Fixer les \textit{incohérences}}
 
-    PHP dispose de plusieurs structure natives propice à l'itération:
+    PHP dispose de plusieurs structure natives propice à l'itération
 
     \begin{itemize}[<+->]
         \item \texttt{array}
@@ -37,12 +46,26 @@
 	\frametitle{Pourquoi}
     \framesubtitle{Fixer les \textit{incohérences}}
 
-    PHP dispose de plusieurs fonctions natives propice à l'itération:
+    PHP dispose de plusieurs fonctions natives propice à l'itération
 
     \begin{itemize}[<+->]
         \item \texttt{array\_map()}
         \item \texttt{array\_filter()}
         \item \texttt{array\_reduce()}
+        \item \texttt{iterator\_to\_array()}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Pourquoi}
+    \framesubtitle{Fixer les \textit{incohérences}}
+
+    PHP dispose de plusieurs structure indispensable pour itérer
+
+    \begin{itemize}[<+->]
+        \item \texttt{for}
+        \item \texttt{foreach}
+        \item \texttt{while}
     \end{itemize}
 \end{frame}
 
