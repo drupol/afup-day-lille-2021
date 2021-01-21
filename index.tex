@@ -1,6 +1,5 @@
-\documentclass{beamer}
-
 \input{preamble}
+\input{itemize}
 
 \begin{document}
 
@@ -14,110 +13,37 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{First Slide}
-	\framesubtitle{Simple frame \textit{reductio ad absurdum}}
-	\begin{itemize}
-		\item 1
-		\item 2
-		      \pause%
-		\item \alert{Alert!!}
-	\end{itemize}
+	\frametitle{Une collection}
+    \framesubtitle{Definition}
+
+    Definir ici l'utilité d'une librairie de collection.
 \end{frame}
 
 \begin{frame}
-	\frametitle{Second Slide}
-	\framesubtitle{with a subtitle}
-	\begin{alertblock}{Help!}
-		text here
-		\begin{itemize}
-			\item point 1
-		\end{itemize}
-	\end{alertblock}
+	\frametitle{Pourquoi}
+    \framesubtitle{Fixer les \textit{incohérences}}
 
-	\begin{example}
-		\begin{itemize}
-			\item 3
-			\item 4
-		\end{itemize}
-	\end{example}
+    PHP dispose de plusieurs structure natives propice à l'itération:
+
+    \begin{itemize}[<+->]
+        \item \texttt{array}
+        \item Interface \texttt{ArrayAccess}
+        \item Iterateur
+        \item Generateur
+    \end{itemize}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Third Slide - no subtitle}
-	\begin{enumerate}
-		\item 1
-		\item 2
-	\end{enumerate}
-	\begin{theorem}
-		This is a result.
-	\end{theorem}
+	\frametitle{Pourquoi}
+    \framesubtitle{Fixer les \textit{incohérences}}
 
-	\[
-		x_i = y_i + \varepsilon_i
-	\]
-\end{frame}
+    PHP dispose de plusieurs fonctions natives propice à l'itération:
 
-\begin{frame}[fragile]
-	\frametitle{PHP Code example}
-	\begin{lstlisting}
-    <?php
-    /* this is a stupid example */
-    $username = $_POST["username"];
-    $passwort = $_POST["passwort"];
-
-    $pass = md5($passwort);
-
-    // another comment
-    if($username=="Andavos" and
-    $pass=="fd0d9cdefd5d42dfa36c74a449aa8214")
-    {
-    echo "Herzlich Willkommen";
-    }
-    else
-    {
-    echo "Login Fehlgeschlagen";
-    }
-    ?>
-    \end{lstlisting}
-\end{frame}
-
-\begin{frame}{Revealing items}
-
-	\newenvironment{wideitemize}{\itemize\addtolength{\itemsep}{10pt}}{\enditemize}
-
-	Here are some things I want to talk about:\\
-	\vspace{.5cm}
-	\begin{wideitemize}
-		\item<1->{Thing 1}
-		\item<2->{Thing 2}
-		\item<3>{Thing 3}
-	\end{wideitemize}
-\end{frame}
-
-\begin{frame}{Remerciements}
-
-	\newenvironment{wideitemize}{\itemize\addtolength{\itemsep}{10pt}}{\enditemize}
-
-	\vspace{.5cm}
-	\begin{wideitemize}
-		\item<1->{AFUP}
-		\item<2->{Vous}
-	\end{wideitemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle{2 columns slide}
-	\framesubtitle{Simple frame \textit{reductio ad absurdum}}
-	\begin{columns}
-		\begin{column}{0.5\textwidth}
-			some text here some text here some text here some text here some text here
-		\end{column}
-		\begin{column}{0.5\textwidth}
-			\begin{center}
-				\includegraphics[width=0.5\textwidth]{afup/style/logo/php-logo}
-			\end{center}
-		\end{column}
-	\end{columns}
+    \begin{itemize}[<+->]
+        \item \texttt{array\_map()}
+        \item \texttt{array\_filter()}
+        \item \texttt{array\_reduce()}
+    \end{itemize}
 \end{frame}
 
 \end{document}
