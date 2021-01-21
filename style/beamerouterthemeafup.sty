@@ -6,8 +6,7 @@
   \begin{beamercolorbox}[wd=\paperwidth,ht=1.25cm]{frametitle}
 
   \begin{tikzpicture}
-    \useasboundingbox[fill=white](0,0) rectangle(\the\paperwidth,2);
-    \fill[white] (3.05,0) rectangle(\the\paperwidth,1.5);
+    \useasboundingbox(0,0) rectangle(\the\paperwidth,2);
     \begin{tikzpicture}[remember picture, overlay]
       \node[anchor=north west,inner sep=0,outer sep=0] at (current page.north west) {
         \includegraphics[scale=0.1, keepaspectratio]{afup/style/logo/logo}
