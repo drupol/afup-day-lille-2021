@@ -1,0 +1,25 @@
+
+\newcommand{\sepframe}[2]{
+    \setbeamercolor{background canvas}{bg=afupbluebackground}
+
+    \begin{frame}[noframenumbering,plain]
+        \begin{tikzpicture}[remember picture,overlay]
+            \fill[afuppink] (0,0) rectangle(.05,\paperheight);
+        \end{tikzpicture}
+      \begin{tikzpicture}[remember picture,overlay]
+          \ifx\insertframesubtitle\@empty%
+              {\node[anchor=west, afupblue, font=\huge] at (0,.25){\uppercase\expandafter{#1}};}
+          \else%
+              {
+                  \node[anchor= west, afupblue, font=\huge] at (0,.25){\uppercase\expandafter{#1}};%
+                  \node[anchor= west, afuppink,font=\small] at (0,-.5){\uppercase\expandafter{#2}};}%
+          \fi
+      \end{tikzpicture}
+
+      \begin{tikzpicture}[remember picture, overlay]
+          \node at (current page.south east) {
+              \includegraphics[trim=0 -4cm -4cm 0, scale=.35, keepaspectratio]{src/afup/style/logo/afup-icon-color}
+            };
+      \end{tikzpicture}
+    \end{frame}
+  }

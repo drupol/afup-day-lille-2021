@@ -3,17 +3,17 @@
 % Frame title
 \defbeamertemplate*{frametitle}{ec}[1][]
 {
-  \begin{beamercolorbox}[wd=\paperwidth,ht=1.25cm]{frametitle}
+  \begin{beamercolorbox}[wd=\paperwidth,ht=1.4cm]{frametitle}
 
-  \begin{tikzpicture}
+    \begin{tikzpicture}
     \useasboundingbox(0,0) rectangle(\the\paperwidth,2);
     \begin{tikzpicture}[remember picture, overlay]
       \node[anchor=north west,inner sep=0,outer sep=0] at (current page.north west) {
-        \includegraphics[scale=0.1, keepaspectratio]{afup/style/logo/logo}
+        \includegraphics[trim=-.5cm 0cm 0cm -.5cm, scale=0.35, keepaspectratio]{afup/style/logo/afup-icon-color}
       };
     \end{tikzpicture}
-  \fill[afupblue] (1.5,0) rectangle(1.55,2);
-   \ifx\insertframesubtitle\@empty%
+    \fill[afupblue] (1.5,0) rectangle(1.55,2);
+    \ifx\insertframesubtitle\@empty%
       {\node[anchor=west, afupbluebackground,font=\large] at (1.5,0.75){\insertframetitle};}
     \else%
       {\node[anchor= west, afupbluebackground,font=\large] at (1.5,0.75){\insertframetitle};%
