@@ -30,7 +30,7 @@
     \begin{frame}
         \begin{columns}
             \column{\paperwidth}
-                \includegraphics[width=\the\paperwidth, height=.5\paperheight]{src/afup/style/logo/bg1}
+                \includegraphics[width=\textwidth, height=.5\paperheight]{src/afup/style/logo/bg1}
             \begin{tikzpicture}
                     \ifx\insertframesubtitle\@empty%
                         {
@@ -71,6 +71,31 @@
         \end{columns}
     \end{frame}
 }
+
+\NewEnviron{frameC}[2]{%
+    \setbeamercolor{background canvas}{bg=white}
+
+    \begin{frame}[noframenumbering]
+        \begin{center}
+            \ifx\insertframesubtitle\@empty%
+                {
+                    \color{afupblue}
+                    \huge\uppercase\expandafter{#1}
+                }
+            \else%
+                {
+                    \color{afupblue}
+                    \huge\uppercase\expandafter{#1}
+                    \noindent
+                    {\color{afuppink} \rule{\linewidth}{0.5mm}}
+                    \color{afuppink}
+                    \small\uppercase\expandafter{#2}
+                }%
+            \fi
+    \end{center}
+\end{frame}
+}
+
 
 
 % To read: https://tex.stackexchange.com/questions/113410/removing-sidebar-from-a-single-beamer-frame

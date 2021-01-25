@@ -43,7 +43,6 @@ Some text here
     \footnotetext[1]{A test footnote in the first column}
 \end{frame}
 
-\section{section 2}
 \begin{frame}
 	\frametitle{Pourquoi}
     \framesubtitle{Fixer les \textit{incohérences}}
@@ -58,7 +57,6 @@ Some text here
     \end{itemize}
 \end{frame}
 
-\section{section 3}
 \begin{frame}
 	\frametitle{Pourquoi}
     \framesubtitle{Fixer les \textit{incohérences}}
@@ -87,6 +85,75 @@ Some text here
 \end{frame}
 
 \begin{frame}
+	\frametitle{Incohérences}
+    \framesubtitle{Array}
+
+    \begin{itemize}[<+->]
+        \item Manque de consistence (\texttt{array\_*()})
+        \item Pas de vérification des types
+        \item Performances
+        \item Pas de gestion des erreurs
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Incohérences}
+    \framesubtitle{PHP}
+
+    \begin{itemize}[<+->]
+        \item Manque de consistence dans les fonctions du genre \texttt{array\_*()}
+        \item Les fonctions d'itérations ne fonctionnent que pour les arrays. Quid du type \texttt{iterable}?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Incohérences}
+    \framesubtitle{PHP}
+
+    \begin{itemize}[<+->]
+        \item \texttt{array\_map(\$callable, \$array)}
+        \item \texttt{array\_map(\$array, \$callable)}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Incohérences}
+    \framesubtitle{PHP/array\_map()}
+
+    Un array est composé de ...
+
+    \begin{itemize}[<+->]
+        \item clés
+        \item valeurs
+    \end{itemize}
+
+    \pause
+
+    Cependant...
+
+    \pause
+
+    \begin{itemize}[<+->]
+        \item Signature: \texttt{array\_map(\$callable, \$array)}
+        \item Callable: \texttt{\$callable(\$value)}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Incohérences}
+    \framesubtitle{Pourquoi?!}
+
+    \begin{itemize}[<+->]
+        \item Pourquoi un tableau est composé de 2 types de données?
+        \item Pourquoi la plupart des fonctions natives ne nous permettent pas d'utiliser les 2?
+    \end{itemize}
+\end{frame}
+
+\begin{frameC}{Bref...}
+
+\end{frameC}
+
+\begin{frame}
 	\frametitle{Pourquoi}
     \framesubtitle{Fixer les \textit{incohérences}}
 
@@ -97,6 +164,20 @@ Some text here
 
         \begin{flushright}
             \tiny{---Julien Pauli}
+        \end{flushright}
+    \end{quote}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Pourquoi}
+    \framesubtitle{Fixer les \textit{incohérences}}
+
+    \begin{quote}
+        Si vous voulez être un meilleur programmeur, apprenez un autre language que
+        le PHP. Si possible un language fonctionnel.
+
+        \begin{flushright}
+            \tiny{---Larry Garfield}
         \end{flushright}
     \end{quote}
 \end{frame}
