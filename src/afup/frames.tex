@@ -1,11 +1,11 @@
 \usepackage{environ}
 
-\newcommand{\sepframe}[2]{
+\NewEnviron{frameD}[2]{
     \setbeamercolor{background canvas}{bg=afupbluebackground}
 
     \begin{frame}[noframenumbering,plain]
         \begin{tikzpicture}[remember picture,overlay]
-            \fill[afuppink] (0,0) rectangle(.05,\paperheight);
+            \fill[afupblue] (0,0) rectangle(.05,\paperheight);
         \end{tikzpicture}
       \begin{tikzpicture}[remember picture,overlay]
           \ifx\insertframesubtitle\@empty%

@@ -8,15 +8,15 @@
 	\titlepage{}
 \end{frame}
 
-\begin{frame}[allowframebreaks]
-	\frametitle{Simple frame title}
-	\framesubtitle{Simple frame \textit{reductio ad absurdum}}
-\end{frame}
+%
+%\begin{frame}[allowframebreaks]
+%	\frametitle{Simple frame title}
+%	\framesubtitle{Simple frame \textit{reductio ad absurdum}}
+%\end{frame}
+%
 
-
-\begin{sepframe}{Definition}{Définir une collection ?!}
-
-\end{sepframe}
+\begin{frameD}{Definition}{Définir une collection ?!}
+\end{frameD}
 
 \begin{frameA}{Title}{Subtitle}
 Body
@@ -27,10 +27,7 @@ Some text here
 \end{frameB}
 
 \section{section 1}
-\begin{frame}
-	\frametitle{Une collection}
-    \framesubtitle{Definition}
-
+\begin{frame}{Une collection}
     \begin{itemize}
         \item Une collection est une structure unifiée pour représenter et manipuler un ensemble de données.
         \item Permettant de les manipuler indépendamment de ce qu'elles contiennent.
@@ -152,6 +149,63 @@ Some text here
 \begin{frameC}{Bref...}
 
 \end{frameC}
+
+\begin{frame}
+	\frametitle{Collections}
+    \framesubtitle{Une liste de collection}
+
+    \begin{itemize}[<+->]
+        \item doctrine/collection
+        \item voku/Arrayy
+        \item Laravel
+        \item CakePHP
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Collections}
+    \framesubtitle{Pourquoi?}
+
+    \begin{itemize}[<+->]
+        \item Unifier la manière de travailler avec des ensemble de données?
+        \item Optimiser les algorithmes?
+        \item faciliter l'emploi de certaines fonctionnalités?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Collections}
+    \framesubtitle{Problème rencontrés?}
+
+    \begin{itemize}[<+->]
+        \item La plupart sont des wrapper de fonctions natives PHP
+        \item La plupart se basent sur des array
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \begin{lstlisting}[firstnumber=1]
+        <?php
+
+        $array = // huge dataset
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \begin{lstlisting}[firstnumber=1]
+        <?php
+
+        $size = 1000;
+
+        $array = range(0, $size ** 3);
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \begin{spverbatim}
+        PHP Fatal error: Allowed memory size of 536870912 bytes exhausted (tried to allocate 34359738376 bytes) in example.php on line 5
+    \end{spverbatim}
+\end{frame}
 
 \begin{frame}
 	\frametitle{Pourquoi}
