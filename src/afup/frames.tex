@@ -1,9 +1,10 @@
 \usepackage{environ}
 
+% Frame with a blue background, a blue title and a pink subtitle only.
 \NewEnviron{frameD}[2]{
     \setbeamercolor{background canvas}{bg=afupbluebackground}
 
-    \begin{frame}[noframenumbering,plain]
+    \begin{frame}[noframenumbering]
         \begin{tikzpicture}[remember picture,overlay]
             \fill[afupblue] (0,0) rectangle(.05,\paperheight);
         \end{tikzpicture}
@@ -16,55 +17,59 @@
                   \node[anchor= west, afuppink,font=\small] at (0,-.5){\uppercase\expandafter{#2}};}%
           \fi
       \end{tikzpicture}
-
-      \begin{tikzpicture}[remember picture, overlay]
-          \node at (current page.south east) {
-              \includegraphics[trim=0 -4cm -4cm 0, scale=.35, keepaspectratio]{src/afup/style/logo/afup-icon-color}
-            };
-      \end{tikzpicture}
     \end{frame}
   }
 
 % Todo: Find a way to get rid of the top margin.
 \NewEnviron{frameA}[2]{%
-    \begin{frame}
-        \begin{columns}
+    \begin{frame}%
+        \vspace{-.3cm}
+        \begin{columns}[T]
             \column{\paperwidth}
-                \includegraphics[width=\textwidth, height=.5\paperheight]{src/afup/style/logo/bg1}
             \begin{tikzpicture}
-                    \ifx\insertframesubtitle\@empty%
+                \node[inner sep=0, outer sep=0, minimum height=.5\paperheight, minimum width=\textwidth] at (0,0){
+                    \includegraphics[width=\textwidth, height=.5\paperheight]{src/afup/style/logo/bg1}
+                };
+            \end{tikzpicture}
+            \begin{tikzpicture}
+                    \ifx\insertframesubtitle\@empty
                         {
-                            \node[shape=rectangle, text opacity=1,minimum height=.5\paperheight, minimum width=\textwidth, anchor=south, afupblue, font=\huge] at (0,.25){\uppercase\expandafter{#1}};
+                            \node[minimum height=.5\paperheight, minimum width=\textwidth, anchor=south] at (0,.25){\color{afupblue}\huge\uppercase\expandafter{#1}};
                         }
                     \else%
                         {
-                            \node[shape=rectangle, text opacity=1,minimum height=.5\paperheight, minimum width=\textwidth, anchor=south, afupblue, font=\huge] at (0,.25){\uppercase\expandafter{#1}};%
-                            \node[shape=rectangle, text opacity=1,minimum height=.5\paperheight, minimum width=\textwidth, anchor=south, afuppink, font=\small] at (0,-.5){\uppercase\expandafter{#2}};
+                            \node[minimum height=.5\paperheight, minimum width=\textwidth, anchor=south] at (0,.25){\color{afupblue}\huge\uppercase\expandafter{#1}};
+                            \node[minimum height=.5\paperheight, minimum width=\textwidth, anchor=south] at (0,-.5){\color{afuppink}\small\uppercase\expandafter{#2}};
                         }%
                     \fi
-                    \BODY
-            \end{tikzpicture}
-          \end{columns}
-    \end{frame}
+                    \BODY%
+            \end{tikzpicture}%
+          \end{columns}%
+    \end{frame}%
 }
 
 % Todo: Find a way to get rid of the top margin.
-\NewEnviron{frameB}[2]{%
+\NewEnviron{frameB}[2]{
     \begin{frame}
-        \begin{columns}
-            \column{.5\paperwidth}
-                \includegraphics[width=\textwidth, height=\paperheight]{src/afup/style/logo/bg1}
+        \vspace{-.4cm}
+        \begin{columns}[c]
             \column{.5\paperwidth}
                 \begin{tikzpicture}
-                    \ifx\insertframesubtitle\@empty%
+                    \node[inner sep=0, outer sep=0, minimum height=\paperheight, minimum width=\textwidth] at (0,0){
+                        \includegraphics[width=\textwidth, height=\paperheight]{src/afup/style/logo/bg1}
+                    };
+                \end{tikzpicture}
+            \column{.5\paperwidth}
+                \begin{tikzpicture}
+                    \ifx\insertframesubtitle\@empty
                         {
                             \node[shape=rectangle, text opacity=1,minimum height=\paperheight, minimum width=\textwidth, anchor=south, afupblue, font=\huge] at (0,.25){\uppercase\expandafter{#1}};
                         }
-                    \else%
+                    \else
                         {
-                            \node[shape=rectangle, text opacity=1,minimum height=\paperheight, minimum width=\textwidth, anchor=south, afupblue, font=\huge] at (0,.25){\uppercase\expandafter{#1}};%
+                            \node[shape=rectangle, text opacity=1,minimum height=\paperheight, minimum width=\textwidth, anchor=south, afupblue, font=\huge] at (0,.25){\uppercase\expandafter{#1}};
                             \node[shape=rectangle, text opacity=1,minimum height=\paperheight, minimum width=\textwidth, anchor=south, afuppink, font=\small] at (0,-.5){\uppercase\expandafter{#2}};
-                        }%
+                        }
                     \fi
                     \BODY
                 \end{tikzpicture}
