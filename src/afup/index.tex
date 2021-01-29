@@ -212,6 +212,45 @@ Some text here
     \end{spverbatim}
 \end{frame}
 
+\begin{frame}[fragile]
+	\frametitle{Thunk}
+    \framesubtitle{Definition}
+
+    \begin{quote}
+        A thunk is a value that is yet to be evaluated. It is used in Haskell systems that implement non-strict semantics by lazy evaluation.
+
+        \pause
+
+        A thunk is a function that wraps an expression to delay its evaluation.
+
+        \pause
+
+        The term originated as a humorous past-tense version of "think".
+    \end{quote}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Thunk}
+    \framesubtitle{Example}
+
+    \begin{lstlisting}
+    <?php
+
+    // Calculation of 1 + 2 is immediate
+    // $x === 3
+    $x = 1 + 2;
+    \end{lstlisting}
+
+    \pause
+
+    \begin{lstlisting}[firstnumber=6]
+    // Calculation of 1 + 2 is delayed
+    // $foo can be called later to perform the calculation
+    // $foo is a thunk!
+    $foo = fn () => 1 + 2;
+    \end{lstlisting}
+\end{frame}
+
 \begin{frame}
 	\frametitle{Pourquoi}
     \framesubtitle{Fixer les \textit{incohérences}}
