@@ -119,7 +119,9 @@
     \end{itemize}
 \end{frame}
 
-\begin{frameC}{Bref\ldots}\end{frameC}
+\begin{frameC}{Bref\ldots}
+
+\end{frameC}
 
 \begin{frame}{Collections}{ça existe déjà!}
     \begin{itemize}[<+->]
@@ -226,42 +228,47 @@
 \end{frame}
 
 \begin{frame}{Schematisons}{une évaluation traditionnelle}
+    \newcolumntype{t}{>{\tt}c}
+        \begin{center}
+            \[
+            \left[ \begin{array}{tt}
+                0 \Rightarrow a \\
+                1 \Rightarrow b \\
+                2 \Rightarrow a
+            \end{array} \right]
+            \pause
+            \xrightarrow{\texttt{array\_flip()}}
+            \pause%
+            \left[ \begin{array}{tt}
+                a \Rightarrow 2 \\
+                b \Rightarrow 1
+            \end{array} \right]
+            \pause
+            \xrightarrow{\texttt{array\_flip()}}
+            \pause
+            \left[ \begin{array}{tt}
+                2 \Rightarrow a \\
+                1 \Rightarrow b
+            \end{array} \right]
+            \]%
+    \end{center}
+\end{frame}
+
+\begin{frame}{Schematisons}{une évaluation traditionnelle}
+    \newcolumntype{t}{>{\tt}c}
     \begin{center}
-        \texttt{
-            \begin{tabular}{|l|l|l|}
-                \hline
-                0 & 1 & 2 \\ \hline
-                a & b & a \\ \hline
-            \end{tabular}
-        }
-
-        \pause
-
-        $\xrightarrow{\texttt{flip()}}$
-
-        \pause
-
-        \texttt{
-            \begin{tabular}{|l|l|l|}
-                \hline
-                a & b \\ \hline
-                2 & 1 \\ \hline
-            \end{tabular}
-        }
-
-        \pause
-
-        $\xrightarrow{\texttt{flip()}}$
-
-        \pause
-
-        \texttt{
-            \begin{tabular}{|l|l|l|}
-                \hline
-                2 & 1 \\ \hline
-                a & b \\ \hline
-            \end{tabular}
-        }
+            \[
+            \left[ \begin{array}{tt}
+                0 \Rightarrow \left[ \begin{array}{tt} a \Rightarrow A\end{array} \right] \\
+                1 \Rightarrow \left[ \begin{array}{tt} b \Rightarrow B\end{array} \right] \\
+                2 \Rightarrow \left[ \begin{array}{tt} c \Rightarrow C\end{array} \right]
+            \end{array} \right]
+            \pause
+            \xrightarrow{\texttt{array\_flip()}}
+            \pause%
+            \raisebox{-.5\height}{\includegraphics[scale=0.05]{meme/No-RageFace.jpg}}
+            \]%
+            \texttt{Fatal error: Uncaught TypeError: Illegal offset type}
     \end{center}
 \end{frame}
 

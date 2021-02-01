@@ -1,112 +1,139 @@
-\begin{frame}
-	\frametitle{Schematisons}
-    \framesubtitle{evaluation lazy}
-
+\begin{frame}{Schematisons}{evaluation \textit{lazy}}
+    \newcolumntype{t}{>{\tt}c}
     \begin{center}
-        \texttt{
-            \begin{tabular}{|l|l|l|}
-                \hline
-                0 & 1 & 2 \\ \hline
-                a & b & a \\ \hline
-            \end{tabular}
-        }
-
-        \pause
-
-        $\xrightarrow{\texttt{flip()}}$
-
-        \pause
-
-        \texttt{
-            \begin{tabular}{|l|l|l|}
-                \hline
-                a & \space & \space \\ \hline
-                0 & \space & \space \\ \hline
-            \end{tabular}
-        }
-
-        \pause
-
-        $\xrightarrow{\texttt{flip()}}$
-
-        \pause
-
-        \texttt{
-            \begin{tabular}{|l|l|l|}
-                \hline
-                0 & \space & \space \\ \hline
-                a & \space & \space \\ \hline
-            \end{tabular}
-        }
+            \[
+            \left[ \begin{array}{tt}
+                0 \Rightarrow a \\
+                1 \Rightarrow b \\
+                2 \Rightarrow a
+            \end{array} \right]
+            \pause
+            \xrightarrow{\texttt{array\_flip()}}
+            \left[ \begin{array}{tt}
+                a \Rightarrow 0
+            \end{array} \right]
+            \pause
+            \xrightarrow{\texttt{array\_flip()}}
+            \left[ \begin{array}{tt}
+                0 \Rightarrow a
+            \end{array} \right]
+            \]%
     \end{center}
 \end{frame}
 
-\begin{frame}
-	\frametitle{Schematisons}
-    \framesubtitle{evaluation lazy}
-
+\begin{frame}{Schematisons}{evaluation \textit{lazy}}
+    \newcolumntype{t}{>{\tt}c}
     \begin{center}
-        \texttt{
-            \begin{tabular}{|l|l|l|}
-                \hline
-                0 & 1 & 2 \\ \hline
-                a & b & a \\ \hline
-            \end{tabular}
-        }
-
-        $\xrightarrow{\texttt{flip()}}$
-
-        \texttt{
-            \begin{tabular}{|l|l|l|}
-                \hline
-                a & b & \space \\ \hline
-                0 & 1 & \space \\ \hline
-            \end{tabular}
-        }
-
-        $\xrightarrow{\texttt{flip()}}$
-
-        \texttt{
-            \begin{tabular}{|l|l|l|}
-                \hline
-                0 & 1 & \space \\ \hline
-                a & b & \space \\ \hline
-            \end{tabular}
-        }
+            \[
+            \left[ \begin{array}{tt}
+                0 \Rightarrow a \\
+                1 \Rightarrow b \\
+                2 \Rightarrow a
+            \end{array} \right]
+            \xrightarrow{\texttt{array\_flip()}}
+            \left[ \begin{array}{tt}
+                a \Rightarrow 0 \\
+                b \Rightarrow 1
+            \end{array} \right]
+            \xrightarrow{\texttt{array\_flip()}}
+            \left[ \begin{array}{tt}
+                0 \Rightarrow a
+            \end{array} \right]
+            \]%
     \end{center}
 \end{frame}
 
-\begin{frame}
-	\frametitle{Schematisons}
-    \framesubtitle{evaluation lazy}
-
+\begin{frame}{Schematisons}{evaluation \textit{lazy}}
+    \newcolumntype{t}{>{\tt}c}
     \begin{center}
-        \texttt{
-            \begin{tabular}{|l|l|l|}
-                \hline
-                0 & 1 & 2 \\ \hline
-                a & b & a \\ \hline
-            \end{tabular}
-        }
+            \[
+            \left[ \begin{array}{tt}
+                0 \Rightarrow a \\
+                1 \Rightarrow b \\
+                2 \Rightarrow a
+            \end{array} \right]
+            \xrightarrow{\texttt{array\_flip()}}
+            \left[ \begin{array}{tt}
+                a \Rightarrow 0 \\
+                b \Rightarrow 1
+            \end{array} \right]
+            \xrightarrow{\texttt{array\_flip()}}
+            \left[ \begin{array}{tt}
+                0 \Rightarrow a \\
+                1 \Rightarrow b
+            \end{array} \right]
+            \]%
+    \end{center}
+\end{frame}
 
-        $\xrightarrow{\texttt{flip()}}$
+\begin{frame}{Schematisons}{evaluation \textit{lazy}}
+    \newcolumntype{t}{>{\tt}c}
+    \begin{center}
+            \[
+            \left[ \begin{array}{tt}
+                0 \Rightarrow a \\
+                1 \Rightarrow b \\
+                2 \Rightarrow a
+            \end{array} \right]
+            \xrightarrow{\texttt{array\_flip()}}
+            \left[ \begin{array}{tt}
+                a \Rightarrow 0 \\
+                b \Rightarrow 1 \\
+                a \Rightarrow 2
+            \end{array} \right]
+            \xrightarrow{\texttt{array\_flip()}}
+            \left[ \begin{array}{tt}
+                0 \Rightarrow a \\
+                1 \Rightarrow b
+            \end{array} \right]
+            \]%
+    \end{center}
+\end{frame}
 
-        \texttt{
-            \begin{tabular}{|l|l|l|}
-                \hline
-                a & b & a \\ \hline
-                0 & 1 & 2 \\ \hline
-            \end{tabular}
-        }
+\begin{frame}{Schematisons}{evaluation \textit{lazy}}
+    \newcolumntype{t}{>{\tt}c}
+    \begin{center}
+            \[
+            \left[ \begin{array}{tt}
+                0 \Rightarrow a \\
+                1 \Rightarrow b \\
+                2 \Rightarrow a
+            \end{array} \right]
+            \xrightarrow{\texttt{array\_flip()}}
+            \left[ \begin{array}{tt}
+                a \Rightarrow 0 \\
+                b \Rightarrow 1 \\
+                a \Rightarrow 2
+            \end{array} \right]
+            \xrightarrow{\texttt{array\_flip()}}
+            \left[ \begin{array}{tt}
+                0 \Rightarrow a \\
+                1 \Rightarrow b \\
+                2 \Rightarrow a
+            \end{array} \right]
+            \]%
+    \end{center}
+\end{frame}
 
-        $\xrightarrow{\texttt{flip()}}$
-
-        \texttt{
-            \begin{tabular}{|l|l|l|}
-                \hline
-                0 & 1 & 2 \\ \hline
-                a & b & a \\ \hline
-            \end{tabular}
-        }
+\begin{frame}{Schematisons}{evaluation \textit{lazy}}
+    \newcolumntype{t}{>{\tt}c}
+    \begin{center}
+            \[
+            \left[ \begin{array}{tt}
+                0 \Rightarrow a \\
+                1 \Rightarrow b \\
+                2 \Rightarrow a
+            \end{array} \right]
+            \xrightarrow{\texttt{array\_flip()}}
+            \left[ \begin{array}{tt}
+                a \Rightarrow 0 \\
+                b \Rightarrow 1
+            \end{array} \right]
+            \xrightarrow{\texttt{array\_flip()}}
+            \left[ \begin{array}{tt}
+                0 \Rightarrow a \\
+                1 \Rightarrow b
+            \end{array} \right]
+            \]%
     \end{center}
 \end{frame}
