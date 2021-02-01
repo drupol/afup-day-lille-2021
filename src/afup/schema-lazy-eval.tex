@@ -24,3 +24,32 @@
         \]
     \end{center}
 \end{frame}
+
+\begin{frame}{Schematisons}{evaluation \textit{lazy}}
+    \newcolumntype{t}{>{\tt}c}
+    \begin{center}
+        \begin{minipage}[adjusting]{.65\textwidth}
+            \begin{math}
+                \left[ \begin{array}{tt}
+                    0 \Rightarrow \left[ \begin{array}{tt} a \Rightarrow A\end{array} \right] \\
+                    1 \Rightarrow \left[ \begin{array}{tt} b \Rightarrow B\end{array} \right] \\
+                    2 \Rightarrow \left[ \begin{array}{tt} c \Rightarrow C\end{array} \right]
+                \end{array} \right]
+                \pause
+                \xrightarrow{\texttt{array\_flip()}}\newline
+                \left[ \begin{array}{tt}
+                    \only<2->{\left[ \begin{array}{tt} a \Rightarrow A\end{array} \right] \Rightarrow 0} \\
+                    \only<4->{\left[ \begin{array}{tt} b \Rightarrow B\end{array} \right] \Rightarrow 1} \\
+                    \only<6->{\left[ \begin{array}{tt} c \Rightarrow C\end{array} \right] \Rightarrow 2}
+                \end{array} \right]
+                \pause
+                \xrightarrow{\texttt{array\_flip()}}\newline
+                \left[ \begin{array}{tt}
+                    \only<3->{0 \Rightarrow \left[ \begin{array}{tt} a \Rightarrow A\end{array} \right]} \\
+                    \only<5->{1 \Rightarrow \left[ \begin{array}{tt} b \Rightarrow B\end{array} \right]} \\
+                    \only<7->{2 \Rightarrow \left[ \begin{array}{tt} c \Rightarrow C\end{array} \right]}
+                \end{array} \right]
+            \end{math}
+        \end{minipage}
+    \end{center}
+\end{frame}
