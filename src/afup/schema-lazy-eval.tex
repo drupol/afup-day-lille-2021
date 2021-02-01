@@ -1,0 +1,112 @@
+\begin{frame}
+	\frametitle{Schematisons}
+    \framesubtitle{evaluation lazy}
+
+    \begin{center}
+        \texttt{
+            \begin{tabular}{|l|l|l|}
+                \hline
+                0 & 1 & 2 \\ \hline
+                a & b & a \\ \hline
+            \end{tabular}
+        }
+
+        \pause
+
+        $\xrightarrow{\texttt{flip()}}$
+
+        \pause
+
+        \texttt{
+            \begin{tabular}{|l|l|l|}
+                \hline
+                a & \space & \space \\ \hline
+                0 & \space & \space \\ \hline
+            \end{tabular}
+        }
+
+        \pause
+
+        $\xrightarrow{\texttt{flip()}}$
+
+        \pause
+
+        \texttt{
+            \begin{tabular}{|l|l|l|}
+                \hline
+                0 & \space & \space \\ \hline
+                a & \space & \space \\ \hline
+            \end{tabular}
+        }
+    \end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Schematisons}
+    \framesubtitle{evaluation lazy}
+
+    \begin{center}
+        \texttt{
+            \begin{tabular}{|l|l|l|}
+                \hline
+                0 & 1 & 2 \\ \hline
+                a & b & a \\ \hline
+            \end{tabular}
+        }
+
+        $\xrightarrow{\texttt{flip()}}$
+
+        \texttt{
+            \begin{tabular}{|l|l|l|}
+                \hline
+                a & b & \space \\ \hline
+                0 & 1 & \space \\ \hline
+            \end{tabular}
+        }
+
+        $\xrightarrow{\texttt{flip()}}$
+
+        \texttt{
+            \begin{tabular}{|l|l|l|}
+                \hline
+                0 & 1 & \space \\ \hline
+                a & b & \space \\ \hline
+            \end{tabular}
+        }
+    \end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Schematisons}
+    \framesubtitle{evaluation lazy}
+
+    \begin{center}
+        \texttt{
+            \begin{tabular}{|l|l|l|}
+                \hline
+                0 & 1 & 2 \\ \hline
+                a & b & a \\ \hline
+            \end{tabular}
+        }
+
+        $\xrightarrow{\texttt{flip()}}$
+
+        \texttt{
+            \begin{tabular}{|l|l|l|}
+                \hline
+                a & b & a \\ \hline
+                0 & 1 & 2 \\ \hline
+            \end{tabular}
+        }
+
+        $\xrightarrow{\texttt{flip()}}$
+
+        \texttt{
+            \begin{tabular}{|l|l|l|}
+                \hline
+                0 & 1 & 2 \\ \hline
+                a & b & a \\ \hline
+            \end{tabular}
+        }
+    \end{center}
+\end{frame}

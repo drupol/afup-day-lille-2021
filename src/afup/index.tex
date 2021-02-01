@@ -8,13 +8,6 @@
 	\titlepage{}
 \end{frame}
 
-%
-%\begin{frame}[allowframebreaks]
-%	\frametitle{Simple frame title}
-%	\framesubtitle{Simple frame \textit{reductio ad absurdum}}
-%\end{frame}
-%
-
 \begin{frameA}{Frame A title}{Frame A subtitle}
 \end{frameA}
 
@@ -27,12 +20,8 @@
 \begin{frameD}{Frame D title}{Frame D subtitle}
 \end{frameD}
 
-\begin{frameB}{Definition}{Définir une collection ?!}
-Some text here
-\end{frameB}
-
 \section{section 1}
-\begin{frame}{Une collection}
+\begin{frame}{Une collection}{Une définition simple}
     \begin{itemize}
         \item Une collection est une structure unifiée pour représenter et manipuler un ensemble de données.
         \item Permettant de les manipuler indépendamment de ce qu'elles contiennent.
@@ -45,10 +34,7 @@ Some text here
     \footnotetext[1]{A test footnote in the first column}
 \end{frame}
 
-\begin{frame}
-	\frametitle{Pourquoi}
-    \framesubtitle{Fixer les \textit{incohérences}}
-
+\begin{frame}{Pourquoi}{Fixer les incohérences}
     PHP dispose de plusieurs structures natives propice à l'itération
 
     \begin{itemize}[<+->]
@@ -59,10 +45,7 @@ Some text here
     \end{itemize}
 \end{frame}
 
-\begin{frame}
-	\frametitle{Pourquoi}
-    \framesubtitle{Fixer les \textit{incohérences}}
-
+\begin{frame}{Pourquoi}{Fixer les incohérences}
     PHP dispose de plusieurs fonctions natives propice à l'itération
 
     \begin{itemize}[<+->]
@@ -73,10 +56,7 @@ Some text here
     \end{itemize}
 \end{frame}
 
-\begin{frame}
-	\frametitle{Pourquoi}
-    \framesubtitle{Fixer les \textit{incohérences}}
-
+\begin{frame}{Pourquoi}{Fixer les incohérences}
     PHP dispose de plusieurs structure indispensable pour itérer
 
     \begin{itemize}[<+->]
@@ -86,10 +66,7 @@ Some text here
     \end{itemize}
 \end{frame}
 
-\begin{frame}
-	\frametitle{Incohérences}
-    \framesubtitle{Array}
-
+\begin{frame}{Incohérences}{array}
     \begin{itemize}[<+->]
         \item Manque de consistence (\texttt{array\_*()})
         \item Pas de vérification des types
@@ -98,20 +75,14 @@ Some text here
     \end{itemize}
 \end{frame}
 
-\begin{frame}
-	\frametitle{Incohérences}
-    \framesubtitle{PHP}
-
+\begin{frame}{Incohérences}{php}
     \begin{itemize}[<+->]
         \item Manque de consistence dans les fonctions du genre \texttt{array\_*()}
         \item Les fonctions d'itérations ne fonctionnent que pour les arrays. Quid du type \texttt{iterable}?
     \end{itemize}
 \end{frame}
 
-\begin{frame}
-	\frametitle{Incohérences}
-    \framesubtitle{PHP}
-
+\begin{frame}{Incohérences}{php}
     \begin{itemize}[<+->]
         \item \texttt{array\_map(\$callable, \$array)}
         \item \texttt{array\_map(\$array, \$callable)}
@@ -122,7 +93,7 @@ Some text here
 	\frametitle{Incohérences}
     \framesubtitle{PHP/array\_map()}
 
-    Un array est composé de ...
+    Un array est composé de\ldots
 
     \begin{itemize}[<+->]
         \item clés
@@ -131,7 +102,7 @@ Some text here
 
     \pause
 
-    Cependant...
+    Cependant\ldots
 
     \pause
 
@@ -141,24 +112,16 @@ Some text here
     \end{itemize}
 \end{frame}
 
-\begin{frame}
-	\frametitle{Incohérences}
-    \framesubtitle{Pourquoi?!}
-
+\begin{frame}{Incohérences}{Pourquoi?}
     \begin{itemize}[<+->]
         \item Pourquoi un tableau est composé de 2 types de données?
         \item Pourquoi la plupart des fonctions natives ne nous permettent pas d'utiliser les 2?
     \end{itemize}
 \end{frame}
 
-\begin{frameC}{Bref...}
+\begin{frameC}{Bref\ldots}\end{frameC}
 
-\end{frameC}
-
-\begin{frame}
-	\frametitle{Collections}
-    \framesubtitle{Une liste de collection}
-
+\begin{frame}{Collections}{ça existe déjà!}
     \begin{itemize}[<+->]
         \item doctrine/collection
         \item voku/Arrayy
@@ -167,10 +130,7 @@ Some text here
     \end{itemize}
 \end{frame}
 
-\begin{frame}
-	\frametitle{Collections}
-    \framesubtitle{Pourquoi?}
-
+\begin{frame}{Collections}{Pourquoi?}
     \begin{itemize}[<+->]
         \item Unifier la manière de travailler avec des ensemble de données?
         \item Optimiser les algorithmes?
@@ -178,10 +138,7 @@ Some text here
     \end{itemize}
 \end{frame}
 
-\begin{frame}
-	\frametitle{Collections}
-    \framesubtitle{Problème rencontrés?}
-
+\begin{frame}{Collections}{Problèmes rencontrés?}
     \begin{itemize}[<+->]
         \item La plupart sont des wrapper de fonctions natives PHP
         \item La plupart se basent sur des array
@@ -212,10 +169,7 @@ Some text here
     \end{spverbatim}
 \end{frame}
 
-\begin{frame}[fragile]
-	\frametitle{Thunk}
-    \framesubtitle{Definition}
-
+\begin{frame}{Thunk}{Définition}
     \begin{quote}
         A thunk is a value that is yet to be evaluated. It is used in Haskell systems that implement non-strict semantics by lazy evaluation.
 
@@ -229,10 +183,7 @@ Some text here
     \end{quote}
 \end{frame}
 
-\begin{frame}[fragile]
-	\frametitle{Thunk}
-    \framesubtitle{Example}
-
+\begin{frame}[fragile]{Thunk}{Example}
     \begin{lstlisting}
     <?php
 
@@ -252,9 +203,6 @@ Some text here
 \end{frame}
 
 \begin{frame}
-	\frametitle{Pourquoi}
-    \framesubtitle{Fixer les \textit{incohérences}}
-
     \begin{quote}
         Je fais du vélo le matin, je voudrais ne pas respirer la poussière générée
         par ces datacenters fous fonctionnant si mal avec des algorithmes,
@@ -267,9 +215,6 @@ Some text here
 \end{frame}
 
 \begin{frame}
-	\frametitle{Pourquoi}
-    \framesubtitle{Fixer les \textit{incohérences}}
-
     \begin{quote}
         Si vous voulez être un meilleur programmeur, apprenez un autre language que
         le PHP. Si possible un language fonctionnel.
@@ -279,5 +224,47 @@ Some text here
         \end{flushright}
     \end{quote}
 \end{frame}
+
+\begin{frame}{Schematisons}{une évaluation traditionnelle}
+    \begin{center}
+        \texttt{
+            \begin{tabular}{|l|l|l|}
+                \hline
+                0 & 1 & 2 \\ \hline
+                a & b & a \\ \hline
+            \end{tabular}
+        }
+
+        \pause
+
+        $\xrightarrow{\texttt{flip()}}$
+
+        \pause
+
+        \texttt{
+            \begin{tabular}{|l|l|l|}
+                \hline
+                a & b \\ \hline
+                2 & 1 \\ \hline
+            \end{tabular}
+        }
+
+        \pause
+
+        $\xrightarrow{\texttt{flip()}}$
+
+        \pause
+
+        \texttt{
+            \begin{tabular}{|l|l|l|}
+                \hline
+                2 & 1 \\ \hline
+                a & b \\ \hline
+            \end{tabular}
+        }
+    \end{center}
+\end{frame}
+
+\input{schema-lazy-eval.tex}
 
 \end{document}
