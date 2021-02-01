@@ -1,7 +1,7 @@
 \begin{frame}{Schematisons}{evaluation \textit{lazy}}
     \newcolumntype{t}{>{\tt}c}
     \begin{center}
-            \[
+        \[
             \left[ \begin{array}{tt}
                 0 \Rightarrow a \\
                 1 \Rightarrow b \\
@@ -10,130 +10,17 @@
             \pause
             \xrightarrow{\texttt{array\_flip()}}
             \left[ \begin{array}{tt}
-                a \Rightarrow 0
+                \only<2->{a \Rightarrow 0} \\
+                \only<4->{b \Rightarrow 1} \\
+                \only<6->{a \Rightarrow 2}
             \end{array} \right]
             \pause
             \xrightarrow{\texttt{array\_flip()}}
             \left[ \begin{array}{tt}
-                0 \Rightarrow a
+                \only<3->{0 \Rightarrow a} \\
+                \only<5->{1 \Rightarrow b} \\
+                \only<7->{2 \Rightarrow a}
             \end{array} \right]
-            \]%
-    \end{center}
-\end{frame}
-
-\begin{frame}{Schematisons}{evaluation \textit{lazy}}
-    \newcolumntype{t}{>{\tt}c}
-    \begin{center}
-            \[
-            \left[ \begin{array}{tt}
-                0 \Rightarrow a \\
-                1 \Rightarrow b \\
-                2 \Rightarrow a
-            \end{array} \right]
-            \xrightarrow{\texttt{array\_flip()}}
-            \left[ \begin{array}{tt}
-                a \Rightarrow 0 \\
-                b \Rightarrow 1
-            \end{array} \right]
-            \xrightarrow{\texttt{array\_flip()}}
-            \left[ \begin{array}{tt}
-                0 \Rightarrow a
-            \end{array} \right]
-            \]%
-    \end{center}
-\end{frame}
-
-\begin{frame}{Schematisons}{evaluation \textit{lazy}}
-    \newcolumntype{t}{>{\tt}c}
-    \begin{center}
-            \[
-            \left[ \begin{array}{tt}
-                0 \Rightarrow a \\
-                1 \Rightarrow b \\
-                2 \Rightarrow a
-            \end{array} \right]
-            \xrightarrow{\texttt{array\_flip()}}
-            \left[ \begin{array}{tt}
-                a \Rightarrow 0 \\
-                b \Rightarrow 1
-            \end{array} \right]
-            \xrightarrow{\texttt{array\_flip()}}
-            \left[ \begin{array}{tt}
-                0 \Rightarrow a \\
-                1 \Rightarrow b
-            \end{array} \right]
-            \]%
-    \end{center}
-\end{frame}
-
-\begin{frame}{Schematisons}{evaluation \textit{lazy}}
-    \newcolumntype{t}{>{\tt}c}
-    \begin{center}
-            \[
-            \left[ \begin{array}{tt}
-                0 \Rightarrow a \\
-                1 \Rightarrow b \\
-                2 \Rightarrow a
-            \end{array} \right]
-            \xrightarrow{\texttt{array\_flip()}}
-            \left[ \begin{array}{tt}
-                a \Rightarrow 0 \\
-                b \Rightarrow 1 \\
-                a \Rightarrow 2
-            \end{array} \right]
-            \xrightarrow{\texttt{array\_flip()}}
-            \left[ \begin{array}{tt}
-                0 \Rightarrow a \\
-                1 \Rightarrow b
-            \end{array} \right]
-            \]%
-    \end{center}
-\end{frame}
-
-\begin{frame}{Schematisons}{evaluation \textit{lazy}}
-    \newcolumntype{t}{>{\tt}c}
-    \begin{center}
-            \[
-            \left[ \begin{array}{tt}
-                0 \Rightarrow a \\
-                1 \Rightarrow b \\
-                2 \Rightarrow a
-            \end{array} \right]
-            \xrightarrow{\texttt{array\_flip()}}
-            \left[ \begin{array}{tt}
-                a \Rightarrow 0 \\
-                b \Rightarrow 1 \\
-                a \Rightarrow 2
-            \end{array} \right]
-            \xrightarrow{\texttt{array\_flip()}}
-            \left[ \begin{array}{tt}
-                0 \Rightarrow a \\
-                1 \Rightarrow b \\
-                2 \Rightarrow a
-            \end{array} \right]
-            \]%
-    \end{center}
-\end{frame}
-
-\begin{frame}{Schematisons}{evaluation \textit{lazy}}
-    \newcolumntype{t}{>{\tt}c}
-    \begin{center}
-            \[
-            \left[ \begin{array}{tt}
-                0 \Rightarrow a \\
-                1 \Rightarrow b \\
-                2 \Rightarrow a
-            \end{array} \right]
-            \xrightarrow{\texttt{array\_flip()}}
-            \left[ \begin{array}{tt}
-                a \Rightarrow 0 \\
-                b \Rightarrow 1
-            \end{array} \right]
-            \xrightarrow{\texttt{array\_flip()}}
-            \left[ \begin{array}{tt}
-                0 \Rightarrow a \\
-                1 \Rightarrow b
-            \end{array} \right]
-            \]%
+        \]
     \end{center}
 \end{frame}
