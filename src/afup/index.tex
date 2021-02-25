@@ -20,6 +20,25 @@
 \begin{frameD}{Frame D title}{Frame D subtitle}
 \end{frameD}
 
+\newcommand\blankfootnote[1]{%
+  \let\thefootnote\relax\footnotetext{#1}%
+  \let\thefootnote\svthefootnote%
+}
+
+\begin{frame}
+    \begin{center}
+        \textit{
+            Les chercheurs du Centre for Energy-Efficient Telecommunications (CEET) et des laboratoires Bell ont montré que
+            les technologies de l'information et de la communication (TIC), qui englobent Internet, les vidéos, les fichiers sonores
+            et autres services dans le cloud, produiraient plus de 830 millions de tonnes de CO\textsubscript{2} chaque année.\\
+            Cela représente 2\% des émissions globales du principal gaz à effet de serre.\\
+            Une telle quantité de CO\textsubscript{2} équivaut aux émissions de l'industrie aérienne.
+        }
+    \end{center}
+
+    \blankfootnote{Source: \href{https://www.futura-sciences.com/planete/actualites/developpement-durable-emissions-co2-liees-internet-polluent-autant-avion-43802/}{Futura Sciences}}
+\end{frame}
+
 \section{section 1}
 \begin{frame}{Une collection}{Une définition simple}
     \begin{itemize}
