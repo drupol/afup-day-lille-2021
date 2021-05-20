@@ -1,0 +1,118 @@
+\begin{frame}{Evaluation}{Les possibilites existantes}
+    \begin{itemize}[<+->]
+        \item Callback (thunk)
+        \item Iterateur / Generateur
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Evaluation}{traditionnelle}
+    \begin{lstlisting}[firstnumber=1]
+        <?php
+
+        $array = range('a', 'z');
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Evaluation}{traditionnelle}
+    \begin{lstlisting}[firstnumber=1]
+        <?php
+
+        $array = range(0, 1000 ** 3);
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Evaluation traditionnelle}{Et bardaf...}
+    \begin{spverbatim}
+        PHP Fatal error: Allowed memory size of 536870912 bytes exhausted (tried to allocate 34359738376 bytes) in example.php on line 5
+    \end{spverbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Evaluation}{paresseuse via un thunk}
+    \begin{lstlisting}[firstnumber=1]
+        <?php
+
+        $array = static fn (): array => range('a', 'z');
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Evaluation}{paresseuse via un thunk}
+    \begin{lstlisting}[firstnumber=1]
+        <?php
+
+        $array = static fn (): array => range(0, 1000 ** 3);
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Evaluation}{paresseuse}
+        Un \textit{thunk} est une valeur qui est en attente d'evaluation.
+
+        \pause
+
+        Un \textit{thunk} est une function qui enrobe (wrap) une expression,
+        pour postposer son evaluation.
+
+        \pause
+
+        Le terme est né comme une version humoristique du passé du verbe
+        anglophone \textit{penser} (\textit{to think}).
+\end{frame}
+
+\begin{frame}[fragile]{Evaluation}{paresseuse via un generateur}
+    \begin{lstlisting}[firstnumber=1]
+        <?php
+
+        function xrange($start, $end, $step = 1): Generator {
+            for ($i = $start; $i <= $end; $i += $step) {
+                yield $i;
+            }
+        }
+
+        foreach (xrange(0, 1000 ** 3) as $value) {
+            // Do stuff
+        }
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Evaluation}{Schématisons une évaluation traditionnelle}
+    \newcolumntype{t}{>{\tt}c}
+        \begin{center}
+            \[
+            \left[ \begin{array}{tt}
+                0 \Rightarrow a \\
+                1 \Rightarrow b \\
+                2 \Rightarrow a
+            \end{array} \right]
+            \pause
+            \xrightarrow{\texttt{array\_flip()}}
+            \left[ \begin{array}{tt}
+                a \Rightarrow 2 \\
+                b \Rightarrow 1
+            \end{array} \right]
+            \pause
+            \xrightarrow{\texttt{array\_flip()}}
+            \left[ \begin{array}{tt}
+                2 \Rightarrow a \\
+                1 \Rightarrow b
+            \end{array} \right]
+            \]%
+    \end{center}
+\end{frame}
+
+\begin{frame}{Evaluation}{Schématisons une évaluation traditionnelle}
+    \newcolumntype{t}{>{\tt}c}
+    \begin{center}
+            \[
+            \left[ \begin{array}{tt}
+                0 \Rightarrow \left[ \begin{array}{tt} a \Rightarrow A\end{array} \right] \\
+                1 \Rightarrow \left[ \begin{array}{tt} b \Rightarrow B\end{array} \right] \\
+                2 \Rightarrow \left[ \begin{array}{tt} c \Rightarrow C\end{array} \right]
+            \end{array} \right]
+            \pause
+            \xrightarrow{\texttt{array\_flip()}}
+            \raisebox{-.5\height}{\includegraphics[scale=0.05]{meme/No-RageFace.jpg}}
+            \]%
+            \texttt{Fatal error: Uncaught TypeError: Illegal offset type}
+    \end{center}
+\end{frame}
+
+\input{schema-lazy-eval.tex}

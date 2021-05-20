@@ -1,4 +1,4 @@
-\begin{frame}{Schematisons}{evaluation \textit{lazy}}
+\begin{frame}{Evaluation}{Schématisons une évaluation paresseuse}
     \newcolumntype{t}{>{\tt}c}
     \begin{center}
         \[
@@ -25,10 +25,10 @@
     \end{center}
 \end{frame}
 
-\begin{frame}{Schematisons}{evaluation \textit{lazy}}
+\begin{frame}{Evaluation}{Schématisons une évaluation paresseuse}
     \newcolumntype{t}{>{\tt}c}
     \begin{center}
-        \begin{minipage}[adjusting]{.65\textwidth}
+        \begin{minipage}[adjusting]{2\textwidth}
             \begin{math}
                 \left[ \begin{array}{tt}
                     0 \Rightarrow \left[ \begin{array}{tt} a \Rightarrow A\end{array} \right] \\
@@ -36,14 +36,14 @@
                     2 \Rightarrow \left[ \begin{array}{tt} c \Rightarrow C\end{array} \right]
                 \end{array} \right]
                 \pause
-                \xrightarrow{\texttt{array\_flip()}}\newline
+                \xrightarrow{}
                 \left[ \begin{array}{tt}
                     \only<2->{\left[ \begin{array}{tt} a \Rightarrow A\end{array} \right] \Rightarrow 0} \\
                     \only<4->{\left[ \begin{array}{tt} b \Rightarrow B\end{array} \right] \Rightarrow 1} \\
                     \only<6->{\left[ \begin{array}{tt} c \Rightarrow C\end{array} \right] \Rightarrow 2}
                 \end{array} \right]
                 \pause
-                \xrightarrow{\texttt{array\_flip()}}\newline
+                \xrightarrow{}
                 \left[ \begin{array}{tt}
                     \only<3->{0 \Rightarrow \left[ \begin{array}{tt} a \Rightarrow A\end{array} \right]} \\
                     \only<5->{1 \Rightarrow \left[ \begin{array}{tt} b \Rightarrow B\end{array} \right]} \\

@@ -8,22 +8,38 @@
 	\titlepage{}
 \end{frame}
 
-\begin{frameA}{Frame A title}{Frame A subtitle}
-\end{frameA}
-
-\begin{frameB}{Frame B title}{Frame B subtitle}
-\end{frameB}
-
-\begin{frameC}{Frame C title}{Frame C subtitle}
-\end{frameC}
-
-\begin{frameD}{Frame D title}{Frame D subtitle}
-\end{frameD}
-
 \newcommand\blankfootnote[1]{%
   \let\thefootnote\relax\footnotetext{#1}%
   \let\thefootnote\svthefootnote%
 }
+
+\begin{frame}{Le plat du jour}
+    \begin{itemize}
+        \item Pourquoi cette presentation
+        \item Les collections
+        \item Concepts lazy
+        \item Comparaison des types d'evaluation
+        \item Lazy collection
+    \end{itemize}
+\end{frame}
+
+\begin{frameD}{Pourquoi}{L'origine de mes recherches}
+
+\end{frameD}
+
+\input{pourquoi.tex}
+
+\begin{frameD}{Les collections}
+
+\end{frameD}
+
+\input{collections.tex}
+
+\begin{frameD}{Concept}{La paresse, tout un concept!}
+
+\end{frameD}
+
+\input{concept.tex}
 
 \begin{frame}
     \begin{center}
@@ -37,190 +53,6 @@
     \end{center}
 
     \blankfootnote{Source: \href{https://www.futura-sciences.com/planete/actualites/developpement-durable-emissions-co2-liees-internet-polluent-autant-avion-43802/}{Futura Sciences}}
-\end{frame}
-
-\section{section 1}
-\begin{frame}{Une collection}{Une définition simple}
-    \begin{itemize}
-        \item Une collection est une structure unifiée pour représenter et manipuler un ensemble de données.
-        \item Permettant de les manipuler indépendamment de ce qu'elles contiennent.
-        \item Elle permettent de réduire l'effort tout en améliorant les performances\footnotemark.
-        \item Favorise l'interoperabilité
-        \item Favorise la réutilisation
-        \item Inclus des implémentations et algorithmes pour manipuler les données
-    \end{itemize}
-
-    \footnotetext[1]{A test footnote in the first column}
-\end{frame}
-
-\begin{frame}{Pourquoi}{Fixer les incohérences}
-    PHP dispose de plusieurs structures natives propice à l'itération
-
-    \begin{itemize}[<+->]
-        \item \texttt{array}
-        \item Interface \texttt{ArrayAccess}
-        \item Iterateur
-        \item Generateur
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{Pourquoi}{Fixer les incohérences}
-    PHP dispose de plusieurs fonctions natives propice à l'itération
-
-    \begin{itemize}[<+->]
-        \item \texttt{array\_map()}
-        \item \texttt{array\_filter()}
-        \item \texttt{array\_reduce()}
-        \item \texttt{iterator\_to\_array()}
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{Pourquoi}{Fixer les incohérences}
-    PHP dispose de plusieurs structure indispensable pour itérer
-
-    \begin{itemize}[<+->]
-        \item \texttt{for}
-        \item \texttt{foreach}
-        \item \texttt{while}
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{Incohérences}{array}
-    \begin{itemize}[<+->]
-        \item Manque de consistence (\texttt{array\_*()})
-        \item Pas de vérification des types
-        \item Performances
-        \item Pas de gestion des erreurs
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{Incohérences}{php}
-    \begin{itemize}[<+->]
-        \item Manque de consistence dans les fonctions du genre \texttt{array\_*()}
-        \item Les fonctions d'itérations ne fonctionnent que pour les arrays. Quid du type \texttt{iterable}?
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{Incohérences}{php}
-    \begin{itemize}[<+->]
-        \item \texttt{array\_map(\$callable, \$array)}
-        \item \texttt{array\_map(\$array, \$callable)}
-    \end{itemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Incohérences}
-    \framesubtitle{PHP/array\_map()}
-
-    Un array est composé de\ldots
-
-    \begin{itemize}[<+->]
-        \item clés
-        \item valeurs
-    \end{itemize}
-
-    \pause
-
-    Cependant\ldots
-
-    \pause
-
-    \begin{itemize}[<+->]
-        \item Signature: \texttt{array\_map(\$callable, \$array)}
-        \item Callable: \texttt{\$callable(\$value)}
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{Incohérences}{Pourquoi?}
-    \begin{itemize}[<+->]
-        \item Pourquoi un tableau est composé de 2 types de données?
-        \item Pourquoi la plupart des fonctions natives ne nous permettent pas d'utiliser les 2?
-    \end{itemize}
-\end{frame}
-
-\begin{frameC}{Bref\ldots}
-
-\end{frameC}
-
-\begin{frame}{Collections}{ça existe déjà!}
-    \begin{itemize}[<+->]
-        \item doctrine/collection
-        \item voku/Arrayy
-        \item Laravel
-        \item CakePHP
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{Collections}{Pourquoi?}
-    \begin{itemize}[<+->]
-        \item Unifier la manière de travailler avec des ensemble de données?
-        \item Optimiser les algorithmes?
-        \item faciliter l'emploi de certaines fonctionnalités?
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{Collections}{Problèmes rencontrés?}
-    \begin{itemize}[<+->]
-        \item La plupart sont des wrapper de fonctions natives PHP
-        \item La plupart se basent sur des array
-    \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]
-    \begin{lstlisting}[firstnumber=1]
-        <?php
-
-        $array = // huge dataset
-    \end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]
-    \begin{lstlisting}[firstnumber=1]
-        <?php
-
-        $size = 1000;
-
-        $array = range(0, $size ** 3);
-    \end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]
-    \begin{spverbatim}
-        PHP Fatal error: Allowed memory size of 536870912 bytes exhausted (tried to allocate 34359738376 bytes) in example.php on line 5
-    \end{spverbatim}
-\end{frame}
-
-\begin{frame}{Thunk}{Définition}
-    \begin{quote}
-        A thunk is a value that is yet to be evaluated. It is used in Haskell systems that implement non-strict semantics by lazy evaluation.
-
-        \pause
-
-        A thunk is a function that wraps an expression to delay its evaluation.
-
-        \pause
-
-        The term originated as a humorous past-tense version of "think".
-    \end{quote}
-\end{frame}
-
-\begin{frame}[fragile]{Thunk}{Example}
-    \begin{lstlisting}
-    <?php
-
-    // Calculation of 1 + 2 is immediate
-    // $x === 3
-    $x = 1 + 2;
-    \end{lstlisting}
-
-    \pause
-
-    \begin{lstlisting}[firstnumber=6]
-    // Calculation of 1 + 2 is delayed
-    // $foo can be called later to perform the calculation
-    // $foo is a thunk!
-    $foo = fn () => 1 + 2;
-    \end{lstlisting}
 \end{frame}
 
 \begin{frame}
@@ -245,49 +77,5 @@
         \end{flushright}
     \end{quote}
 \end{frame}
-
-\begin{frame}{Schematisons}{évaluation traditionnelle}
-    \newcolumntype{t}{>{\tt}c}
-        \begin{center}
-            \[
-            \left[ \begin{array}{tt}
-                0 \Rightarrow a \\
-                1 \Rightarrow b \\
-                2 \Rightarrow a
-            \end{array} \right]
-            \pause
-            \xrightarrow{\texttt{array\_flip()}}
-            \left[ \begin{array}{tt}
-                a \Rightarrow 2 \\
-                b \Rightarrow 1
-            \end{array} \right]
-            \pause
-            \xrightarrow{\texttt{array\_flip()}}
-            \left[ \begin{array}{tt}
-                2 \Rightarrow a \\
-                1 \Rightarrow b
-            \end{array} \right]
-            \]%
-    \end{center}
-\end{frame}
-
-\begin{frame}{Schematisons}{évaluation traditionnelle}
-    \newcolumntype{t}{>{\tt}c}
-    \begin{center}
-            \[
-            \left[ \begin{array}{tt}
-                0 \Rightarrow \left[ \begin{array}{tt} a \Rightarrow A\end{array} \right] \\
-                1 \Rightarrow \left[ \begin{array}{tt} b \Rightarrow B\end{array} \right] \\
-                2 \Rightarrow \left[ \begin{array}{tt} c \Rightarrow C\end{array} \right]
-            \end{array} \right]
-            \pause
-            \xrightarrow{\texttt{array\_flip()}}
-            \raisebox{-.5\height}{\includegraphics[scale=0.05]{meme/No-RageFace.jpg}}
-            \]%
-            \texttt{Fatal error: Uncaught TypeError: Illegal offset type}
-    \end{center}
-\end{frame}
-
-\input{schema-lazy-eval.tex}
 
 \end{document}
