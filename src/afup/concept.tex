@@ -9,7 +9,7 @@
     \begin{lstlisting}[firstnumber=1]
         <?php
 
-        $array = range('a', 'z');
+        $var = 'foobar';
     \end{lstlisting}
 \end{frame}
 
@@ -17,7 +17,7 @@
     \begin{lstlisting}[firstnumber=1]
         <?php
 
-        $array = range(0, 1000 ** 3);
+        $var = range(0, 1000 ** 3);
     \end{lstlisting}
 \end{frame}
 
@@ -45,8 +45,8 @@
 
 \begin{frame}{Evaluation paresseuse}{Un \texttt{thunk}}
     \begin{itemize}[<+->]
-        \item Un \texttt{thunk} est un \texttt{callback} avec une valeur
-        sémantique plus précise.
+        \item Un \texttt{thunk} est un \texttt{callback} avec une plus value
+        sémantique en terme de précision.
         \item Un \textit{thunk} est l'expression d'une valeur qui est en attente
         d'evaluation.
         \item Un \textit{thunk} est une function qui enrobe (\texttt{wrap}) une
