@@ -1,11 +1,11 @@
 \begin{frame}{Evaluation}{Les possibilites existantes}
     \begin{itemize}[<+->]
-        \item Callback (thunk)
-        \item Iterateur / Generateur
+        \item Via un \texttt{callback} ou \texttt{thunk}
+        \item Via un iterateur
     \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Evaluation}{traditionnelle}
+\begin{frame}[fragile]{Evaluation traditionnelle}{Par defaut en PHP}
     \begin{lstlisting}[firstnumber=1]
         <?php
 
@@ -13,7 +13,7 @@
     \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Evaluation}{traditionnelle}
+\begin{frame}[fragile]{Evaluation traditionnelle}{Par defaut en PHP}
     \begin{lstlisting}[firstnumber=1]
         <?php
 
@@ -21,43 +21,81 @@
     \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Evaluation traditionnelle}{Et bardaf...}
+\begin{frame}[fragile]{Evaluation traditionnelle}{Par defaut en PHP}
     \begin{spverbatim}
         PHP Fatal error: Allowed memory size of 536870912 bytes exhausted (tried to allocate 34359738376 bytes) in example.php on line 5
     \end{spverbatim}
 \end{frame}
 
-\begin{frame}[fragile]{Evaluation}{paresseuse via un thunk}
+\begin{frame}[fragile]{Evaluation paresseuse}{Via un \texttt{callback} ou \texttt{thunk}}
     \begin{lstlisting}[firstnumber=1]
         <?php
 
-        $array = static fn (): array => range('a', 'z');
+        $array = static fn(): array => range('a', 'z');
     \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Evaluation}{paresseuse via un thunk}
+\begin{frame}[fragile]{Evaluation paresseuse}{Via un \texttt{callback} ou \texttt{thunk}}
     \begin{lstlisting}[firstnumber=1]
         <?php
 
-        $array = static fn (): array => range(0, 1000 ** 3);
+        $array = static fn(): array => range(0, 1000 ** 3);
     \end{lstlisting}
 \end{frame}
 
-\begin{frame}{Evaluation}{paresseuse}
-        Un \textit{thunk} est une valeur qui est en attente d'evaluation.
-
-        \pause
-
-        Un \textit{thunk} est une function qui enrobe (wrap) une expression,
-        pour postposer son evaluation.
-
-        \pause
-
-        Le terme est né comme une version humoristique du passé du verbe
-        anglophone \textit{penser} (\textit{to think}).
+\begin{frame}{Evaluation paresseuse}{Un \texttt{thunk}}
+    \begin{itemize}[<+->]
+        \item Un \texttt{thunk} est un \texttt{callback} avec une valeur
+        sémantique plus précise.
+        \item Un \textit{thunk} est l'expression d'une valeur qui est en attente
+        d'evaluation.
+        \item Un \textit{thunk} est une function qui enrobe (\texttt{wrap}) une
+        expression, pour postposer son evaluation.
+        \item L'origine du terme est né comme une version humoristique du passé
+        du verbe anglophone \textit{penser} (\textit{to think}).
+    \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Evaluation}{paresseuse via un generateur}
+\begin{frameC}{Oui, mais\ldots}
+
+\end{frameC}
+
+\begin{frame}[fragile]{Evaluation paresseuse}{Via un \texttt{callback} ou \texttt{thunk}}
+    \begin{lstlisting}[firstnumber=1]
+        <?php
+
+        $array = static fn(): array => range(0, 1000 ** 3);
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Evaluation paresseuse}{Via un \texttt{callback} ou \texttt{thunk}}
+    \begin{spverbatim}
+        PHP Fatal error: Allowed memory size of 536870912 bytes exhausted (tried to allocate 34359738376 bytes) in example.php on line 5
+    \end{spverbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Evaluation paresseuse}{Via un \texttt{callback} ou \texttt{thunk}}
+    \includegraphics[width=\textwidth]{meme/wtf.png}
+\end{frame}
+
+\begin{frame}{Evaluation paresseuse}{Un \texttt{thunk}}
+    \begin{itemize}[<+->]
+        \item Ne retourne qu'une seule valeur
+    \end{itemize}
+\end{frame}
+
+\begin{frameC}{Et pour les collections alors ?}
+
+\end{frameC}
+
+\begin{frame}{Evaluation paresseuse}{Les iterateurs}
+    \begin{itemize}[<+->]
+        \item Les iterateurs
+        \item Les generateurs
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Evaluation paresseuse}{Via un iterateur}
     \begin{lstlisting}[firstnumber=1]
         <?php
 
@@ -73,7 +111,7 @@
     \end{lstlisting}
 \end{frame}
 
-\begin{frame}{Evaluation}{Schématisons une évaluation traditionnelle}
+\begin{frame}{Schemas}{Evaluation traditionnelle}
     \newcolumntype{t}{>{\tt}c}
         \begin{center}
             \[
@@ -98,7 +136,7 @@
     \end{center}
 \end{frame}
 
-\begin{frame}{Evaluation}{Schématisons une évaluation traditionnelle}
+\begin{frame}{Schemas}{Evaluation traditionnelle}
     \newcolumntype{t}{>{\tt}c}
     \begin{center}
             \[
