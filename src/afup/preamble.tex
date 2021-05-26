@@ -9,24 +9,41 @@
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{array}
+\usepackage{textcomp}
 
 \definecolor{dkgreen}{rgb}{0,.6,0}
 \definecolor{dkblue}{rgb}{0,0,.6}
 \definecolor{dkyellow}{cmyk}{0,0,.8,.3}
 
 \lstset{
+  upquote          = true,
+  columns          = fullflexible,
+  breakautoindent  = false,
+  framerule        = 1pt,
+  xleftmargin      = 0pt,
+  xrightmargin     = 0pt,
+  breakindent      = 0pt,
+  resetmargins     = true,
   language         = php,
+  numberstyle      = \scriptsize\ttfamily\color{gray},
   basicstyle       = \scriptsize\ttfamily,
-  keywordstyle     = \color{dkblue},
+  keywordstyle     = \bfseries\color{dkblue},
   stringstyle      = \color{red},
   identifierstyle  = \color{dkgreen},
   commentstyle     = \color{gray},
-  emph             =[1]{php},
-  emphstyle        =[1]\color{black},
-  emph             =[2]{if,and,or,else},
-  emphstyle        =[2]\color{dkyellow}
+  emph             =[1]{php,if,and,or,else,static,for,foreach,while,do,try,catch,finally,use,namespace},
+  emphstyle        =[1]\color{afuppink},
+  emph             =[2]{int, bool, string, array, Generator},
+  emphstyle        =[2]\bfseries\color{dkblue},
+  emph             =[3]{Collection,filter,map,shuffle,limit,fromIterable,xrange},
+  emphstyle        =[3]\bfseries\color{dkblue},
+  alsoletter       = {0,1,2,3,4,5,6,7,8,9},
   showstringspaces = false,
   numbers          = left,
+  extendedchars    = \true,
+  inputencoding    = utf8,
+  keepspaces       = true,
+  morekeywords     = {fn,function,return,as,yield}
   }
 
 \input{git}

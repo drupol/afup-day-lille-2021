@@ -31,14 +31,6 @@
     \begin{lstlisting}[firstnumber=1]
         <?php
 
-        $array = static fn(): array => range('a', 'z');
-    \end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]{Evaluation paresseuse}{Via un \texttt{callback} ou \texttt{thunk}}
-    \begin{lstlisting}[firstnumber=1]
-        <?php
-
         $array = static fn(): array => range(0, 1000 ** 3);
     \end{lstlisting}
 \end{frame}
