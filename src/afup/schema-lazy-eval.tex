@@ -5,6 +5,33 @@
             \left[ \begin{array}{tt}
                 0 \Rightarrow a \\
                 1 \Rightarrow b \\
+                2 \Rightarrow c
+            \end{array} \right]
+            \pause
+            \xrightarrow{\texttt{array\_flip()}}
+            \left[ \begin{array}{tt}
+                \only<2->{a \Rightarrow 0} \\
+                \only<4->{b \Rightarrow 1} \\
+                \only<6->{c \Rightarrow 2}
+            \end{array} \right]
+            \pause
+            \xrightarrow{\texttt{array\_flip()}}
+            \left[ \begin{array}{tt}
+                \only<3->{0 \Rightarrow a} \\
+                \only<5->{1 \Rightarrow b} \\
+                \only<7->{2 \Rightarrow c}
+            \end{array} \right]
+        \]
+    \end{center}
+\end{frame}
+
+\begin{frame}{Schema 4}{Evaluation paresseuse avec \texttt{array\_flip()}}
+    \newcolumntype{t}{>{\tt}c}
+    \begin{center}
+        \[
+            \left[ \begin{array}{tt}
+                0 \Rightarrow a \\
+                1 \Rightarrow b \\
                 2 \Rightarrow a
             \end{array} \right]
             \pause
@@ -25,7 +52,7 @@
     \end{center}
 \end{frame}
 
-\begin{frame}{Schema 4}{Evaluation paresseuse avec \texttt{array\_flip()}}
+\begin{frame}{Schema 5}{Evaluation paresseuse avec \texttt{array\_flip()}}
     \newcolumntype{t}{>{\tt}c}
     \begin{center}
         \begin{minipage}[adjusting]{2\textwidth}

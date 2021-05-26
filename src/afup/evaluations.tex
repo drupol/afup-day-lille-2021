@@ -153,8 +153,37 @@
     \end{lstlisting}
 \end{frame}
 
+% TODO: Expliquer la magie du yield
+
 \begin{frame}{array\_flip}{Prenons un autre exemple}
     \includegraphics[width=\textwidth]{screenshots/Screenshot_20210526_144450.png}
+\end{frame}
+
+\begin{frame}{Schema 0}{Evaluation traditionnelle avec \texttt{array\_flip()}}
+    \newcolumntype{t}{>{\tt}c}
+        \begin{center}
+            \[
+            \left[ \begin{array}{tt}
+                0 \Rightarrow a \\
+                1 \Rightarrow b \\
+                2 \Rightarrow c
+            \end{array} \right]
+            \pause
+            \xrightarrow{\texttt{array\_flip()}}
+            \left[ \begin{array}{tt}
+                a \Rightarrow 0 \\
+                b \Rightarrow 1 \\
+                c \Rightarrow 2
+            \end{array} \right]
+            \pause
+            \xrightarrow{\texttt{array\_flip()}}
+            \left[ \begin{array}{tt}
+                0 \Rightarrow a \\
+                1 \Rightarrow b \\
+                2 \Rightarrow c
+            \end{array} \right]
+            \]%
+    \end{center}
 \end{frame}
 
 \begin{frame}{Schema 1}{Evaluation traditionnelle avec \texttt{array\_flip()}}
@@ -200,6 +229,19 @@
 \end{frame}
 
 \input{schema-lazy-eval.tex}
+
+\begin{frame}[fragile]{Evaluation paresseuse}{Juste pour les curieux... \texttt{array\_flip()} paresseux}
+    \begin{lstlisting}[firstnumber=1]
+        <?php
+
+        function lazy_array_flip(array $data): Generator
+        {
+            foreach ($data as $key => $value) {
+                yield $value => $data;
+            }
+        }
+    \end{lstlisting}
+\end{frame}
 
 \begin{frameC}{On récapitule\ldots}
 

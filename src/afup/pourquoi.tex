@@ -84,8 +84,8 @@
         \item Inconsistance des fonctions (\texttt{array\_*()})
         \item Ordre des arguments (\textit{Sera probablement different avec PHP 8})
         \begin{itemize}[<+->]
-            \item \texttt{array\_map(\$callable, \$array)}
-            \item \texttt{array\_map(\$array, \$callable)}
+            \item \texttt{array\_map(\$callable, \$array)} ou \\ \texttt{array\_map(\$array, \$callable)} ?
+            \item \texttt{array\_filter(\$callable, \$array)} ou \\ \texttt{array\_filter(\$array, \$callable)} ?
         \end{itemize}
         \item Inconsistance des callbacks
         \item Pas de vérification des types
@@ -95,7 +95,7 @@
 \end{frame}
 
 \begin{frame}{Incohérences}{Exemple avec le célèbre \texttt{array\_map()}}
-    En PHP, \texttt{array} est composé de \colorbox{yellow}{\textbf{couple(s)}} de\ldots
+    Un \texttt{array} est composé de \colorbox{yellow}{\textbf{couple(s)}} de\ldots
 
     \begin{itemize}[<+->]
         \item<1-> Clé
@@ -157,7 +157,7 @@
 \begin{frame}{Pourquoi}{Bref\ldots}
     \begin{itemize}[<+->]
         \item On \colorbox{yellow}{\textbf{sait}} que PHP n'est pas parfait\ldots \pause[\thebeamerpauses] mais qu'il va bientôt l'être!\pause
-        \item On a \colorbox{yellow}{\textbf{l'habitude}}\ldots \pause[\thebeamerpauses] et donc, on ne fait plus attention
+        \item On a \colorbox{yellow}{\textbf{l'habitude}}\ldots \pause[\thebeamerpauses] et donc, on ne fait plus attention\pause
         \item Cela ne nous empêche pas de construire de \colorbox{yellow}{\textbf{belles choses}} malgré tout
     \end{itemize}
 \end{frame}
