@@ -1,0 +1,71 @@
+\begin{frame}{Une collection}{Une définition simple}
+    \begin{itemize}[<+->]
+        \item \colorbox{yellow}{\textbf{Structure unifiée}} pour représenter un ensemble de données
+        \item \colorbox{yellow}{\textbf{Facilite}} les manipulations indépendamment de ce qu'elles contiennent
+        \item \colorbox{yellow}{\textbf{Réduire}} l'effort tout en améliorant l'accessibilité et la lisibilité du code
+        \item Favorise \colorbox{yellow}{\textbf{l'interopérabilité}} et la réutilisation
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Collections}{Mais! Ca existe déjà!}
+    \begin{itemize}[<+->]
+        \item \texttt{doctrine/collections}
+        \item \texttt{voku/Arrayy}
+        \item \texttt{nikic/iter}
+        \item Laravel
+        \item CakePHP
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Collections}{Pourquoi?}
+    \begin{itemize}[<+->]
+        \item Unifier la manière de travailler avec des ensemble de données
+        \item Optimiser les algorithmes
+        \item Faciliter l'emploi de certaines fonctionnalités
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Collections}{Exemple de code}
+    \begin{lstlisting}[firstnumber=1]
+        <?php
+
+        $asciiRange = range(0, 255);
+
+        $collection = Collection::fromIterable($range)
+            ->filter(static fn(int $code): bool => 97 <= $code)
+            ->filter(static fn(int $code): bool => 122 >= $code)
+            ->map(static fn(int $code): string => chr($code))
+            ->map(static fn(string $letter): string => strtoupper($letter))
+            ->shuffle()
+            ->limit(3);
+
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Collections}{Avantages?}
+    \begin{itemize}[<+->]
+        \item Facile a lire et a comprendre
+        \item Intuitif pour les modifications
+        \item Autocompletion dans l'environnement de travail
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Collections}{Etats des lieux}
+    \begin{itemize}[<+->]
+        \item La plupart sont des wrapper de fonctions natives PHP
+        \item La plupart ne fonctionnent qu'avec des \texttt{array}
+        \item La plupart ne permettent pas de gérer plus de données que les
+        fonctions natives de PHP
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Collections}{Ce qui serait vraiment cool!}
+    \begin{itemize}[<+->]
+        \item Une collection devrait pouvoir gérer autant de données que l'on
+        souhaite
+        \item Une collection devrait nous fournir plus de fonctionnalités que
+        celles que nous avons par défaut
+        \item Une collection devrait gérer les différents types d'
+        \texttt{iterable}.
+    \end{itemize}
+\end{frame}
