@@ -118,8 +118,20 @@
     En PHP, \texttt{array} est composé de \colorbox{yellow}{\textbf{couple(s)}} de\ldots
 
     \begin{itemize}[<+->]
-        \item Clés (\texttt{\$key})
-        \item Valeurs (\texttt{\$value})
+        \item<1-> Clé
+        \visible<3->{
+            \begin{itemize}[<+->]
+                \item Unique
+                \item Type \texttt{integer} ou \texttt{string} uniquement
+            \end{itemize}
+        }
+        \item<2-> Valeur
+        \visible<4->{
+            \begin{itemize}[<+->]
+                \item Pas de restrictions ni sur l'unicité, ni sur les types
+            \end{itemize}
+        }
+
     \end{itemize}
 \end{frame}
 

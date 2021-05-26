@@ -1,11 +1,24 @@
-\begin{frame}{Evaluation}{Les possibilites existantes}
+\begin{frame}{Evaluation}{Etat des lieux}
     \begin{itemize}[<+->]
-        \item Via un \texttt{callback} ou \texttt{thunk}
-        \item Via un iterateur
+        \item<1-> Traditionnelle
+
+        \visible<3->{
+            \begin{itemize}[<+->]
+                \item Via une assignation
+            \end{itemize}
+        }
+
+        \item<2-> Paresseuse
+
+        \visible<4->{
+            \begin{itemize}[<+->]
+                \item Via un \texttt{callback}
+            \end{itemize}
+        }
     \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Evaluation traditionnelle}{Par defaut en PHP}
+\begin{frame}[fragile]{Evaluation traditionnelle}{Un exemple}
     \begin{lstlisting}[firstnumber=1]
         <?php
 
@@ -13,7 +26,7 @@
     \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Evaluation traditionnelle}{Par defaut en PHP}
+\begin{frame}[fragile]{Evaluation traditionnelle}{Un autre exemple}
     \begin{lstlisting}[firstnumber=1]
         <?php
 
@@ -21,58 +34,68 @@
     \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Evaluation traditionnelle}{Par defaut en PHP}
+\begin{frame}[fragile]{Evaluation traditionnelle}{Un autre exemple\ldots oops!}
     \begin{spverbatim}
         PHP Fatal error: Allowed memory size of 536870912 bytes exhausted (tried to allocate 34359738376 bytes) in example.php on line 5
     \end{spverbatim}
 \end{frame}
 
-\begin{frame}[fragile]{Evaluation paresseuse}{Via un \texttt{callback} ou \texttt{thunk}}
+\begin{frame}[fragile]{Evaluation paresseuse}{Un autre exemple\ldots une solution?}
     \begin{lstlisting}[firstnumber=1]
         <?php
 
-        $array = static fn(): array => range(0, 1000 ** 3);
+        $callback = static fn(): array => range(0, 1000 ** 3);
     \end{lstlisting}
 \end{frame}
 
-\begin{frame}{Evaluation paresseuse}{Un \texttt{thunk}}
+\begin{frame}{Evaluation paresseuse}{Un \textit{thunk}, définition}
     \begin{itemize}[<+->]
-        \item Un \texttt{thunk} est un \texttt{callback} avec une plus value
-        sémantique en terme de précision.
-        \item Un \textit{thunk} est l'expression d'une valeur qui est en attente
-        d'evaluation.
+        \item Un \textit{thunk} est un \colorbox{yellow}{\textbf{conteneur}}
+        \item Un \textit{thunk} est un \texttt{callback} avec une
+        \colorbox{yellow}{\textbf{\textit{plus-value}}} sémantique en terme de
+        précision.
+        \item Un \textit{thunk} est l'expression d'une valeur qui est en
+        \colorbox{yellow}{\textbf{attente d'evaluation}}.
         \item Un \textit{thunk} est une function qui enrobe (\texttt{wrap}) une
-        expression, pour postposer son evaluation.
+        expression, pour \colorbox{yellow}{\textbf{postposer}} son evaluation.
         \item L'origine du terme est né comme une version humoristique du passé
         du verbe anglophone \textit{penser} (\textit{to think}).
     \end{itemize}
 \end{frame}
 
-\begin{frameC}{Oui, mais\ldots}
-
-\end{frameC}
-
-\begin{frame}[fragile]{Evaluation paresseuse}{Via un \texttt{callback} ou \texttt{thunk}}
+\begin{frame}[fragile]{Evaluation paresseuse}{Via un \texttt{callback} ou \textit{thunk}}
     \begin{lstlisting}[firstnumber=1]
         <?php
 
-        $array = static fn(): array => range(0, 1000 ** 3);
+        $callback = static fn(): array => range(0, 1000 ** 3);
+
+        $callback();
     \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Evaluation paresseuse}{Via un \texttt{callback} ou \texttt{thunk}}
+\begin{frame}[fragile]{Evaluation paresseuse}{Coïncidence?? Je ne crois pas!}
     \begin{spverbatim}
         PHP Fatal error: Allowed memory size of 536870912 bytes exhausted (tried to allocate 34359738376 bytes) in example.php on line 5
     \end{spverbatim}
 \end{frame}
 
-\begin{frame}[fragile]{Evaluation paresseuse}{Via un \texttt{callback} ou \texttt{thunk}}
+\begin{frame}[fragile]{Evaluation paresseuse}{Via un \texttt{callback} ou \textit{thunk}}
     \includegraphics[width=\textwidth]{meme/wtf.png}
 \end{frame}
 
-\begin{frame}{Evaluation paresseuse}{Un \texttt{thunk}}
+\begin{frameC}{On récapitule\ldots}
+
+\end{frameC}
+
+\begin{frame}{Evaluation paresseuse}{Les \textit{thunk}, récap}
     \begin{itemize}[<+->]
-        \item Ne retourne qu'une seule valeur
+        \item Un \textit{thunk} est un \colorbox{yellow}{\textbf{callable}} qui fait office de \colorbox{yellow}{\textbf{conteneur}}
+
+        \item Utile pour \colorbox{yellow}{\textbf{retarder}} l'exécution d'un morceau de code
+
+        \item Pratique pour les données \colorbox{yellow}{\textbf{scalaires}}
+
+        \item N'est pas la solution magique à tous les problèmes
     \end{itemize}
 \end{frame}
 
@@ -80,23 +103,50 @@
 
 \end{frameC}
 
-\begin{frame}{Evaluation paresseuse}{Les iterateurs}
+\begin{frame}{Evaluation paresseuse}{Etat des lieux}
+    Existe t'il un moyen de faire une \colorbox{yellow}{\textbf{évaluation paresseuse}} sur un \colorbox{yellow}{\textbf{ensemble de
+    données}} ?
+
+    \pause
+    \bigskip
+
+    Une sorte de \textit{thunk}, qui pourrait \colorbox{yellow}{\textbf{itérer}}
+    sur les élements d'une collection et renvoyer ces élements
+    \colorbox{yellow}{\textbf{un par un}}, sans jamais renvoyer/évaluer le
+    résultat dans sa globalité.
+\end{frame}
+
+\begin{frameC}{Oui, ça existe!}
+
+\end{frameC}
+
+\begin{frame}{Evaluation paresseuse}{Les itérateurs}
     \begin{itemize}[<+->]
-        \item Les iterateurs
-        \item Les generateurs
+        \item Les itérateurs
+        \item Les générateurs
     \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Evaluation paresseuse}{Via un iterateur}
+\begin{frame}[fragile]{Evaluation paresseuse}{Via un itérateur}
     \begin{lstlisting}[firstnumber=1]
         <?php
 
+        // Evaluation traditionnelle
+        foreach (range(0, 1000 ** 3) as $value) {
+            // FATAL ERROR
+        }
+    \end{lstlisting}
+
+    \pause
+
+    \begin{lstlisting}[firstnumber=8]
         function xrange($start, $end, $step = 1): Generator {
             for ($i = $start; $i <= $end; $i += $step) {
                 yield $i;
             }
         }
 
+        // Evaluation paresseuse
         foreach (xrange(0, 1000 ** 3) as $value) {
             // Do stuff
         }
