@@ -237,7 +237,7 @@
         function lazy_array_flip(array $data): Generator
         {
             foreach ($data as $key => $value) {
-                yield $value => $data;
+                yield $value => $key;
             }
         }
     \end{lstlisting}

@@ -9,11 +9,10 @@
 
 \begin{frame}{Pourquoi}{Motivations}
     \begin{itemize}[<+->]
-        \item \colorbox{yellow}{\textbf{Personnelles}}, experimentation, \textit{learning-by-doing}
-        \item Aider a mieux \colorbox{yellow}{\textbf{comprendre}} les concepts
+        \item \colorbox{yellow}{\textbf{Personnelles}}, envie d'apprendre et d'expérimentation, \textit{learning-by-doing}
+        \item Aider à mieux \colorbox{yellow}{\textbf{comprendre}} les principes
         \item \colorbox{yellow}{\textbf{Simplifier}} l'utilisation de ces concepts
         \item \colorbox{yellow}{\textbf{Corriger}} un manquement (besoin $\Rightarrow$ solution)
-        \item Et pourtant...
     \end{itemize}
 \end{frame}
 
@@ -28,7 +27,8 @@
 
     \begin{itemize}[<+->]
         \item Les fonctions \texttt{array\_*} (\textit{$\pm$ 52 disponibles})
-        \begin{itemize}[<+->]
+
+        \begin{itemize}
             \item \texttt{array\_map()}
             \item \texttt{array\_filter()}
             \item \texttt{array\_reduce()}
@@ -82,7 +82,7 @@
     \begin{itemize}[<+->]
         \item Uniquement pour les \texttt{array}
         \item Inconsistance des fonctions (\texttt{array\_*()})
-        \item Ordre des arguments (\textit{Sera probablement different avec PHP 8})
+        \item Ordre des arguments (\textit{Sera probablement différent avec PHP 8})
         \begin{itemize}[<+->]
             \item \texttt{array\_map(\$callable, \$array)} ou \\ \texttt{array\_map(\$array, \$callable)} ?
             \item \texttt{array\_filter(\$callable, \$array)} ou \\ \texttt{array\_filter(\$array, \$callable)} ?
@@ -94,7 +94,7 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Incohérences}{Exemple avec le célèbre \texttt{array\_map()}}
+\begin{frame}{Incohérences}{Exemple avec \texttt{array\_map()}}
     Un \texttt{array} est composé de \colorbox{yellow}{\textbf{couple(s)}} de\ldots
 
     \begin{itemize}[<+->]
