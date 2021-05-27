@@ -159,6 +159,12 @@
     \includegraphics[width=\textwidth]{screenshots/Screenshot_20210526_144450.png}
 \end{frame}
 
+\begin{frame}[fragile]{Evaluation paresseuse}{Via un itérateur}
+    \begin{lstlisting}[firstnumber=1]
+        $output = array_flip(array_flip($input));
+    \end{lstlisting}
+\end{frame}
+
 \begin{frame}{Schema 0}{Evaluation traditionnelle avec \texttt{array\_flip()}}
     \newcolumntype{t}{>{\tt}c}
         \begin{center}
@@ -244,7 +250,7 @@
         $input = [
             0 => 'a',
             1 => 'b',
-            2 => 'a'
+            2 => 'a',
         ];
 
         $output = iterator_to_array(
@@ -263,9 +269,9 @@
 
 \begin{frame}{Evaluation paresseuse}{Les \textit{itérateurs et générateurs}, récap}
     \begin{itemize}[<+->]
-        \item Permet d'itérer sur une collection
-
         \item Par défaut paresseux
+
+        \item Permet d'itérer sur une collection
 
         \item Permet de dissocier les clés et les valeurs
 

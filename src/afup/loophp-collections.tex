@@ -1,16 +1,12 @@
 \begin{frame}{Motivations}{Une liste exhaustive}
     \begin{itemize}[<+->]
-        \item Par curiosité et envie d'apprendre
-        \item Pour comprendre et mettre en pratique des concepts appris dans
-        d'autre languages tels que Haskell
-        \item Favoriser la sémantique et propager une bonne utilisation du code
-        \item Pour favoriser l'interopérabilité et l'éco-informatique
+        \item Par \colorbox{yellow}{\textbf{curiosité}} et envie d'apprendre
+        \item Pour \colorbox{yellow}{\textbf{comprendre}} et mettre en pratique
+        des concepts appris dans d'autre languages fonctionnels (\textit{Haskell, OCaml})
+        \item Pour \colorbox{yellow}{\textbf{propager}} ces concepts et les rendre facilement accessible
+        \item Pour \colorbox{yellow}{\textbf{favoriser}} l'interopérabilité et l'\textit{éco-informatique}
     \end{itemize}
 \end{frame}
-
-\begin{frameC}{Mais aussi\ldots}
-
-\end{frameC}
 
 \begin{frame}
     \begin{flushleft}
@@ -43,27 +39,52 @@
     \blankfootnote{Source: \href{http://blog.jpauli.tech/a-new-move-in-my-career/}{Julien Pauli blog}}
 \end{frame}
 
-\begin{frame}
-    \begin{flushleft}
-        \textit{
-            Si vous voulez être un meilleur programmeur, apprenez un autre language que
-            le PHP. Si possible un language fonctionnel.
-        }
-        \begin{flushright}
-            \tiny{---Larry Garfield}
-        \end{flushright}
-    \end{flushleft}
-
-    \blankfootnote{Source: \href{https://www.youtube.com/watch?v=3mcGzBnSm1c}{Nashville PHP Meetup: 2020-05-12. Never* Use Array with Larry Garfield}}
-\end{frame}
-
 \begin{frame}{loophp/collection}{A propos}
     \begin{itemize}[<+->]
+        \item Disponible pour PHP >= 7.4
         \item Commencé en Août 2019
-        \item Entièrement paresseuse
         \item Pas de dépendances
-        \item $\pm$ 85 méthodes/opérations disponibles
-        \item Testée et typée
+        \item $\pm$ 800 commits
+        \item Entièrement paresseuse
+        \item $\pm$ 85 méthodes disponibles, sans état (\textit{stateless})
+        \item Testée, typée
     \end{itemize}
 \end{frame}
 
+\begin{frame}{loophp/collection}{Idées et concepts}
+    \begin{itemize}[<+->]
+        \item Basé sur une utilisation exhaustive des générateurs
+        \item Beaucoup de concepts sont inspirés directement du language Haskell
+        \item Corrige beaucoup d'incohérences de PHP
+        \item Algorithmes optimisés et re-utilisés partout
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{loophp/collection}{Utilisée par qui?}
+    \begin{itemize}[<+->]
+        \item Sur des projets personnels
+        \item Par des clients en Belgique et Luxembourg
+        \item Par des utilisateurs pour agréger beaucoup de données sur des gros
+        sites en France
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Exemple 0}{Calculer les nombres de Fibonacci}
+    \begin{lstlisting}[firstnumber=1]
+    <?php
+
+    Collection::unfold(static fn ($a = 0, $b = 1): array => [$b, $a + $b])
+        ->limit(10);
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Exemple 1}{Calculer 300 entiers aléatoires différents}
+    \begin{lstlisting}[firstnumber=1]
+    <?php
+
+    Collection::unfold(fn () => mt_rand() / mt_getrandmax())
+        ->map(static fn ($value): float => floor($value * 1000) + 1)
+        ->distinct()
+        ->limit(300);
+    \end{lstlisting}
+\end{frame}
