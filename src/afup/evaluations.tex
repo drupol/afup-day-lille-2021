@@ -230,16 +230,30 @@
 
 \input{schema-lazy-eval.tex}
 
-\begin{frame}[fragile]{Evaluation paresseuse}{Juste pour les curieux... \texttt{array\_flip()} paresseux}
+\begin{frame}[fragile]{Evaluation paresseuse}{Juste pour les curieux\ldots \texttt{array\_flip()} paresseux}
     \begin{lstlisting}[firstnumber=1]
         <?php
 
-        function lazy_array_flip(array $data): Generator
+        function lazy_array_flip(iterable $data): Generator
         {
             foreach ($data as $key => $value) {
                 yield $value => $key;
             }
         }
+
+        $input = [
+            0 => 'a',
+            1 => 'b',
+            2 => 'a'
+        ];
+
+        $output = iterator_to_array(
+            lazy_array_flip(
+                lazy_array_flip($input)
+            )
+        );
+
+        assert($input === $output);
     \end{lstlisting}
 \end{frame}
 

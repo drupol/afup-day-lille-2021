@@ -13,7 +13,7 @@
 \usepackage{ragged2e}
 \usepackage{fontawesome5}
 
-\definecolor{dkgreen}{rgb}{0,.6,0}
+\definecolor{dkgreen}{rgb}{0,.5,0}
 \definecolor{dkblue}{rgb}{0,0,.6}
 \definecolor{dkyellow}{cmyk}{0,0,.8,.3}
 
@@ -28,14 +28,14 @@
   resetmargins     = true,
   language         = php,
   numberstyle      = \scriptsize\ttfamily\color{gray},
-  basicstyle       = \scriptsize\ttfamily,
+  basicstyle       = \scriptsize\ttfamily\color{afuppink},
   keywordstyle     = \bfseries\color{dkblue},
   stringstyle      = \color{red},
   identifierstyle  = \color{dkgreen},
   commentstyle     = \color{gray},
-  emph             =[1]{php,if,and,or,else,static,for,foreach,while,do,try,catch,finally,use,namespace},
+  emph             =[1]{php,if,and,or,else,static,for,foreach,as,while,do,try,catch,finally,use,namespace,yield,yield from},
   emphstyle        =[1]\color{afuppink},
-  emph             =[2]{int, bool, string, array, Generator},
+  emph             =[2]{int, bool, string, array, Generator, iterable},
   emphstyle        =[2]\bfseries\color{dkblue},
   emph             =[3]{Collection,filter,map,shuffle,limit,fromIterable,xrange},
   emphstyle        =[3]\bfseries\color{dkblue},
@@ -45,7 +45,7 @@
   extendedchars    = \true,
   inputencoding    = utf8,
   keepspaces       = true,
-  morekeywords     = {fn,function,return,as,yield}
+  morekeywords     = {new, true, false, catch, function, fn, return, null, catch, switch, if, while, do, else, elseif, case, break}
   }
 
 \input{git}
@@ -53,7 +53,7 @@
 \title{Lazy collection}
 \subtitle{Evaluation et collection paresseuses}
 \institute{Institute}
-\date{28 Mai 2021 - \faCodeBranch \gitrevisionsmall}
+\date{28 Mai 2021 - \faCodeBranch\nobreak\hspace{.16667em plus .08333em}\gitrevisionsmall}
 \author{Pol Dellaiera}
 \logo{
     \vspace{-.3cm}
