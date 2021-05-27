@@ -82,7 +82,7 @@
     \begin{lstlisting}[firstnumber=1]
     <?php
 
-    Collection::unfold(fn () => mt_rand() / mt_getrandmax())
+    Collection::unfold(static fn (): float => mt_rand() / mt_getrandmax())
         ->map(static fn ($value): float => floor($value * 1000) + 1)
         ->distinct()
         ->limit(300);
