@@ -75,8 +75,7 @@
 
     Collection::fromIterable(['a', 'b', 'c', 'd', 'a'])
         ->flip()
-        ->flip()
-        ->all();
+        ->flip();
     \end{lstlisting}
 
     \pause
@@ -111,7 +110,7 @@
     $string = file_get_contents('https://loripsum.net/api');
     // $string = <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. ...</p>
 
-    Collection::fromString(file_get_contents('https://loripsum.net/api'))
+    Collection::fromString($string)
         ->filter(static fn (string $i): int => preg_match('/^[a-zA-Z]+$/', $i))
         ->map(static fn (string $i): string => strtolower($i))
         ->frequency()
