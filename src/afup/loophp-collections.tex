@@ -41,12 +41,13 @@
 
 \begin{frame}{loophp/collection}{A propos}
     \begin{itemize}[<+->]
+        \item OpenSource, dispo sur Github
         \item Disponible pour PHP >= 7.4
         \item Commencé en Août 2019
         \item Pas de dépendances
         \item $\pm$ 800 commits
         \item Entièrement paresseuse
-        \item $\pm$ 85 méthodes disponibles, sans état (\textit{stateless})
+        \item $\pm$ 85 méthodes disponibles
         \item Testée, typée
     \end{itemize}
 \end{frame}
@@ -54,37 +55,137 @@
 \begin{frame}{loophp/collection}{Idées et concepts}
     \begin{itemize}[<+->]
         \item Basé sur une utilisation exhaustive des générateurs
-        \item Beaucoup de concepts sont inspirés directement du language Haskell
+        \item Concepts directement inspirés du language Haskell
         \item Corrige beaucoup d'incohérences de PHP
         \item Algorithmes optimisés et re-utilisés partout
     \end{itemize}
 \end{frame}
 
-\begin{frame}{loophp/collection}{Utilisée par qui?}
+\begin{frame}{loophp/collection}{Utilisé par qui?}
     \begin{itemize}[<+->]
         \item Sur des projets personnels
         \item Par des clients en Belgique et Luxembourg
-        \item Par des utilisateurs pour agréger beaucoup de données sur des gros
-        sites en France
+        \item Par des utilisateurs pour agréger des données en France
     \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Exemple 0}{Calculer les nombres de Fibonacci}
+\begin{frame}[fragile]{Exemple d'utilisation 0}{Double flip}
+    \begin{lstlisting}[firstnumber=1]
+    <?php
+
+    Collection::fromIterable(['a', 'b', 'c', 'd', 'a'])
+        ->flip()
+        ->flip()
+        ->all();
+    \end{lstlisting}
+
+    \pause
+
+    \begin{lstlisting}[firstnumber=8]
+    // ['a', 'b', 'c', 'd', 'a']
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Exemple d'utilisation 1}{On commence en douceur}
+    \begin{lstlisting}[firstnumber=1]
+    <?php
+
+    Collection::times(1000000)
+        ->filter(static fn (int $n): bool => $n % 2 === 0)
+        ->filter(static fn (int $n): bool => str_contains((string) $n, '321'))
+        ->filter(static fn (int $n): bool => strlen((string) $n) >= 4)
+        ->limit(1000);
+    \end{lstlisting}
+
+    \pause
+
+    \begin{lstlisting}[firstnumber=9]
+    // 3210, 3212, 3214, 3216, 3218, 13210, 13212, ... 493218
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Exemple d'utilisation 2}{Analyse de texte}
+    \begin{lstlisting}[firstnumber=1]
+    <?php
+
+    $string = file_get_contents('https://loripsum.net/api');
+    // $string = <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. ...</p>
+
+    Collection::fromString(file_get_contents('https://loripsum.net/api'))
+        ->filter(static fn (string $i): int => preg_match('/^[a-zA-Z]+$/', $i))
+        ->map(static fn (string $i): string => strtolower($i))
+        ->frequency()
+        ->flip()
+        ->sort()
+        ->reverse();
+    \end{lstlisting}
+
+    \pause
+
+    \begin{lstlisting}[firstnumber=14]
+    /**
+        [i] => 137
+        [e] => 128
+        [t] => 96
+        [a] => 92
+        [u] => 88
+        [s] => 77
+        ...
+    */
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Exemple d'utilisation 3}{La suite de Fibonacci}
     \begin{lstlisting}[firstnumber=1]
     <?php
 
     Collection::unfold(static fn ($a = 0, $b = 1): array => [$b, $a + $b])
         ->limit(10);
     \end{lstlisting}
+
+    \pause
+
+    \begin{lstlisting}[firstnumber=6]
+    /**
+        [0, 1],
+        [1, 2],
+        [2, 3],
+        [3, 5],
+        [5, 8],
+        [8, 13],
+        [13, 21],
+        [21, 34],
+        [34, 55],
+        [44, 89],
+    */
+    \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Exemple 1}{Calculer 300 entiers aléatoires différents}
+\begin{frame}[fragile]{Exemple d'utilisation 4}{Approximation du nombre $\pi$}
     \begin{lstlisting}[firstnumber=1]
     <?php
 
-    Collection::unfold(static fn (): float => mt_rand() / mt_getrandmax())
-        ->map(static fn ($value): float => floor($value * 1000) + 1)
-        ->distinct()
-        ->limit(300);
+    $precision = 10 ** -4;
+
+    Collection::unfold(static fn (int $n = 0): int => $n + 1)
+        ->map(
+            static fn (int $i): int => $i * 2,
+            static fn (int $i): array => [$i, $i],
+            static fn (array $chunk): array => [
+                $chunk[0] / ($chunk[0] - 1),
+                $chunk[1] / ($chunk[1] + 1)
+            ]
+        )
+        ->unwrap()
+        ->reduction(
+            static fn (float $carry, float $i): float => $carry * $i, 2
+        )
+        ->window(1)
+        ->drop(1)
+        ->until(
+            static fn (array $v): bool => abs($v[0] - $v[1]) < ($precision / 2)
+        )
+        ->last(); // 3.1415676541454
     \end{lstlisting}
 \end{frame}
+

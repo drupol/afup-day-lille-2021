@@ -20,7 +20,7 @@
 
 \end{frameC}
 
-\begin{frame}{Pourquoi}{Gérer des ensembles de données}
+\begin{frame}{Pourquoi}{Etat des lieux}
     PHP dispose de \colorbox{yellow}{\textbf{fonctions natives}} propices à l'itération
 
     \pause
@@ -38,7 +38,7 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Pourquoi}{Gérer des ensembles de données}
+\begin{frame}{Pourquoi}{Etat des lieux}
     PHP dispose de \colorbox{yellow}{\textbf{structures natives}} propices à l'itération
 
     \pause
@@ -47,11 +47,10 @@
         \item Tableaux (\texttt{array})
         \item Objects/Interfaces (\texttt{ArrayObject}, \texttt{ArrayAccess})
         \item Itérateurs
-        \item Générateurs
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Pourquoi}{Gérer des ensembles de données}
+\begin{frame}{Pourquoi}{Etat des lieux}
     PHP dispose de \colorbox{yellow}{\textbf{structures natives}} propices à l'itération
 
     \pause
@@ -81,21 +80,21 @@
 \begin{frame}{Pourquoi}{Des incohérences dans les fonctions}
     \begin{itemize}[<+->]
         \item Uniquement pour les \texttt{array}
-        \item Inconsistance des fonctions (\texttt{array\_*()})
         \item Ordre des arguments (\textit{Sera probablement différent avec PHP 8})
         \begin{itemize}[<+->]
             \item \texttt{array\_map(\$callable, \$array)} ou \\ \texttt{array\_map(\$array, \$callable)} ?
             \item \texttt{array\_filter(\$callable, \$array)} ou \\ \texttt{array\_filter(\$array, \$callable)} ?
         \end{itemize}
-        \item Inconsistance des callbacks
+        \item Inconsistance des paramètres (\texttt{callbacks})
         \item Pas de vérification des types
         \item Performances
-        \item Pas de gestion des erreurs
     \end{itemize}
 \end{frame}
 
 \begin{frame}{Incohérences}{Exemple avec \texttt{array\_map()}}
     Un \texttt{array} est composé de \colorbox{yellow}{\textbf{couple(s)}} de\ldots
+
+    \bigskip
 
     \begin{itemize}[<+->]
         \item<1-> Clé
@@ -108,7 +107,7 @@
         \item<2-> Valeur
         \visible<4->{
             \begin{itemize}[<+->]
-                \item Pas de restrictions ni sur l'unicité, ni sur les types
+                \item Pas de restrictions ni sur l'unicité, ni sur le typage
             \end{itemize}
         }
 
@@ -120,7 +119,7 @@
 \end{frameC}
 
 \begin{frame}{Incohérences}{Exemple avec le célèbre \texttt{array\_map()}}
-    \texttt{array\_map(callable \$callback, array \$array): array}
+    \texttt{array\_map(callable \$callback, array \$data): array}
 
     \pause
 
@@ -131,7 +130,7 @@
             \item \texttt{callable} qui n'accepte qu'\colorbox{yellow}{\textbf{une seule}} valeur
         \end{itemize}
 
-        \item \texttt{\$array}
+        \item \texttt{\$data}
 
         \begin{itemize}[<+->]
             \item N'accepte que les valeurs de type \colorbox{yellow}{\texttt{\textbf{array}}}
